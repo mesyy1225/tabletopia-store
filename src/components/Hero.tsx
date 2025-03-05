@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Updated slideshow images with stock fashion images
 const slideImages = [
-  "https://images.unsplash.com/photo-1617968763460-64828d926d5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
-  "https://images.unsplash.com/photo-1521224911436-1e61a934c39a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+  "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
 ];
 
 const Hero: React.FC = () => {
@@ -73,7 +74,7 @@ const Hero: React.FC = () => {
           >
             <img
               src={image}
-              alt={`Slide ${index + 1}`}
+              alt={`Fashion slideshow ${index + 1}`}
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
@@ -124,22 +125,22 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="inline-block mb-3 text-sm font-semibold tracking-wider uppercase bg-primary/30 backdrop-blur-sm px-3 py-1 rounded-full text-primary-foreground/90"
           >
-            Craftsmanship Reimagined
+            Fashion Reimagined
           </motion.div>
           
           <motion.h1 
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold leading-tight mb-6"
           >
-            Timeless Tables, <br />
-            Modern Craft
+            Elegance in <br />
+            Every Detail
           </motion.h1>
           
           <motion.p 
             variants={itemVariants}
             className="text-lg md:text-xl text-white/90 mb-8 max-w-xl"
           >
-            Each WoodCraft table is a masterpiece, handcrafted with premium materials and meticulous attention to detail.
+            Each Bisora creation is a masterpiece, crafted with premium materials and meticulous attention to detail.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
