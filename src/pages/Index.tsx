@@ -30,22 +30,22 @@ const Index: React.FC = () => {
                   Our Process
                 </span>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold">
-                  Exceptional Craftsmanship in Every Detail
+                  Exceptional Quality in Every Detail
                 </h2>
                 <p className="text-muted-foreground">
-                  At WoodCraft, we believe that great design comes from the perfect balance of beauty and function. Our master craftspeople select the finest materials and employ traditional woodworking techniques alongside modern innovations to create tables that will stand the test of time.
+                  At Bisora, we believe that great design comes from the perfect balance of beauty and function. Our expert fashion designers select the finest materials and employ traditional craftsmanship techniques alongside modern innovations to create products that will stand the test of time.
                 </p>
                 <p className="text-muted-foreground">
-                  Each piece passes through the hands of skilled artisans who carefully shape, join, and finish the wood to bring out its natural character and beauty. The result is furniture that's not just a functional object, but a work of art that tells a story.
+                  Each piece passes through the hands of skilled artisans who carefully craft and finish the products to bring out their natural beauty. The result is fashion that's not just functional, but a work of art that tells a story.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div>
-                    <h3 className="font-medium text-xl mb-2">Sustainable Materials</h3>
-                    <p className="text-sm text-muted-foreground">We source our woods from responsible suppliers committed to sustainable forestry practices.</p>
+                    <h3 className="font-medium text-xl mb-2">Quality Materials</h3>
+                    <p className="text-sm text-muted-foreground">We source our materials from responsible suppliers committed to sustainable practices.</p>
                   </div>
                   <div>
-                    <h3 className="font-medium text-xl mb-2">Handcrafted Excellence</h3>
-                    <p className="text-sm text-muted-foreground">Every table is meticulously crafted by our skilled artisans with years of experience.</p>
+                    <h3 className="font-medium text-xl mb-2">Expert Craftsmanship</h3>
+                    <p className="text-sm text-muted-foreground">Every product is meticulously crafted with attention to detail and quality.</p>
                   </div>
                 </div>
               </motion.div>
@@ -58,8 +58,8 @@ const Index: React.FC = () => {
                 className="relative h-[600px] rounded-lg overflow-hidden"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1521224911436-1e61a934c39a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Craftsman working on a wooden table" 
+                  src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Fashion design workshop" 
                   className="object-cover h-full w-full"
                 />
               </motion.div>
@@ -83,20 +83,20 @@ const Index: React.FC = () => {
               {[
                 {
                   name: "Emily Johnson",
-                  role: "Interior Designer",
-                  quote: "The craftsmanship of my WoodCraft dining table is exceptional. The attention to detail and the natural beauty of the wood makes it the centerpiece of my dining room.",
+                  role: "Loyal Customer",
+                  quote: "The quality of my Bisora products is exceptional. The attention to detail and the materials make their pieces stand out in my wardrobe.",
                   image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                 },
                 {
                   name: "Michael Chen",
-                  role: "Restaurant Owner",
-                  quote: "We furnished our entire restaurant with WoodCraft tables. Three years later, they still look as beautiful as the day they arrived, despite heavy daily use.",
+                  role: "Fashion Enthusiast",
+                  quote: "I've been a fan of Bisora for years. Their products consistently impress with their quality and style, and they always exceed my expectations.",
                   image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                 },
                 {
                   name: "Sofia Rodriguez",
-                  role: "Home Owner",
-                  quote: "The Artisan Side Table I purchased is truly a work of art. The hand-carved details are extraordinary, and it's become a conversation piece in my living room.",
+                  role: "Style Blogger",
+                  quote: "The accessories I purchased from Bisora are truly works of art. The design details are extraordinary, and they've become conversation pieces in my outfits.",
                   image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
                 }
               ].map((testimonial, index) => (
