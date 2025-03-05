@@ -43,9 +43,11 @@ export const products: Product[] = [
     description: "Our best-selling Elegance Dining Table is crafted from premium solid oak with a natural finish that highlights the wood's beautiful grain patterns. The table's clean lines and minimalist design make it a versatile centerpiece for any dining room. The table comfortably seats 6 people and is built to last for generations.",
     price: 1299,
     images: [
-      "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
-      "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
-      "https://images.unsplash.com/photo-1633505899118-4ca6bd143043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      "https://i.ibb.co/gMcKWyFk/elegance-dining-1.jpg",
+      "https://i.ibb.co/Mkpp82D7/elegance-dining-2.jpg",
+      "https://i.ibb.co/DnMk7x5/elegance-dining-3.jpg",
+      "https://i.ibb.co/p6SVT1Wj/elegance-dining-4.jpg",
+      "https://i.ibb.co/N27prg9D/rustic-dining-1.jpg"
     ],
     categories: ["Dining", "Oak", "Modern"],
     material: "Solid Oak",
@@ -83,9 +85,11 @@ export const products: Product[] = [
     description: "The Nordic Coffee Table combines Scandinavian simplicity with impeccable craftsmanship. Made from solid walnut with a warm, rich finish, this coffee table features subtle rounded edges and tapered legs for a light, floating appearance. The spacious tabletop provides ample space for books, décor, and beverages, while the clean design ensures it will complement any living space.",
     price: 749,
     images: [
-      "https://images.unsplash.com/photo-1567016507665-356928ac6679?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1532102362839-8a34adc8c5e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      "https://i.ibb.co/GfhnC8Gy/coffee-table-1.jpg",
+      "https://i.ibb.co/LdHJRGZY/coffee-table-2.jpg",
+      "https://i.ibb.co/HT446tJn/coffee-table-3.jpg",
+      "https://i.ibb.co/MWYyYrn/coffee-table-4.jpg",
+      "https://i.ibb.co/yFbZFP3C/coffee-table-5.jpg"
     ],
     categories: ["Coffee", "Walnut", "Scandinavian"],
     material: "Solid Walnut",
@@ -115,9 +119,10 @@ export const products: Product[] = [
     description: "The Executive Desk is the ultimate statement piece for any home office or professional workspace. Crafted from premium mahogany with a deep, lustrous finish, this desk features two spacious drawers with soft-close mechanisms and brass hardware. The generous work surface provides ample space for productivity, while the elegant profile ensures this desk will become a treasured piece in your workspace.",
     price: 1899,
     images: [
-      "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
-      "https://images.unsplash.com/photo-1544140708-514b7837e6b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1542330952-bffc55e812b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80"
+      "https://i.ibb.co/997VBVdX/desk-1.jpg",
+      "https://i.ibb.co/LXkYMk1S/desk-2.jpg",
+      "https://i.ibb.co/GvWKd096/desk-3.jpg",
+      "https://i.ibb.co/hFkLF0pG/desk-4.jpg"
     ],
     categories: ["Office", "Mahogany", "Executive"],
     material: "Mahogany",
@@ -155,9 +160,11 @@ export const products: Product[] = [
     description: "The Industrial Console Table combines rugged iron legs with a top made from reclaimed pine, creating a perfect blend of industrial style and sustainable design. Each table is unique due to the natural variations in the reclaimed wood, showing distinctive markings and grain patterns. The slender profile makes it ideal for entryways, behind sofas, or against walls in any room where you want to add character and functionality.",
     price: 599,
     images: [
-      "https://images.unsplash.com/photo-1551298698-66b830a4f11c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1212&q=80",
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80"
+      "https://i.ibb.co/rGKY10Q/console-1.jpg",
+      "https://i.ibb.co/C5trgBS/console-2.jpg",
+      "https://i.ibb.co/yc3fSxr/console-3.jpg",
+      "https://i.ibb.co/LzvGcpd/console-4.jpg",
+      "https://i.ibb.co/dJJHM0t/console-5.jpg"
     ],
     categories: ["Console", "Industrial", "Reclaimed"],
     material: "Iron and Reclaimed Pine",
@@ -195,9 +202,9 @@ export const products: Product[] = [
     description: "The Modern Meeting Table is designed for contemporary office spaces and meeting rooms. The tempered glass top is supported by a precision-engineered steel base, creating a sophisticated floating effect. This table comfortably seats 8 people and includes integrated cable management for tech-ready meetings. The clean lines and transparent surface maximize the sense of space in any room.",
     price: 2499,
     images: [
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1572025442646-866d16c84a54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      "https://i.ibb.co/HLMp9k6/meeting-1.jpg",
+      "https://i.ibb.co/TB58WbT/meeting-2.jpg",
+      "https://i.ibb.co/ycGVmZY/meeting-3.jpg"
     ],
     categories: ["Conference", "Glass", "Modern", "Office"],
     material: "Tempered Glass and Steel",
