@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-
 const Contact: React.FC = () => {
   return <Layout>
       <div className="pt-24 pb-16">
@@ -140,7 +138,7 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-lg">Business Hours</h3>
                       <div className="text-muted-foreground mt-1 space-y-1">
-                        <p>Open Everyday: 9am - 6pm</p>
+                        <p>Open Everyday: 8am - 6pm</p>
                       </div>
                     </div>
                   </div>
