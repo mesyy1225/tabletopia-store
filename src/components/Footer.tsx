@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
-
 const Footer: React.FC = () => {
-  return (
-    <footer className="bg-primary text-primary-foreground pt-16 pb-8">
+  return <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
@@ -16,13 +13,7 @@ const Footer: React.FC = () => {
               that combine comfort with elegance for discerning customers.
             </p>
             <div className="flex space-x-4 pt-2">
-              <a 
-                href="https://www.facebook.com/people/Bisora/100088083387315/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="hover:text-accent-foreground transition-colors" 
-                aria-label="Facebook"
-              >
+              <a href="https://www.facebook.com/people/Bisora/100088083387315/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
               <a href="#" className="hover:text-accent-foreground transition-colors" aria-label="Twitter">
@@ -94,9 +85,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">
-                  Nairobi, Kenya
-                </span>
+                <span className="text-primary-foreground/80">Bisora Furniture, Maragahahena, Thalgahawila Road, Kudauduwa, Horana, Sri Lanka.</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0" />
@@ -118,8 +107,6 @@ const Footer: React.FC = () => {
           <p>© {new Date().getFullYear()} Bisora. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
