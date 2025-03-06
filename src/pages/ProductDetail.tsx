@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "@/lib/data";
@@ -53,13 +54,13 @@ const ProductDetail: React.FC = () => {
   return (
     <Layout>
       <div className="container mx-auto px-6 py-8">
-        {/* Breadcrumb */}
+        {/* Breadcrumb - Fixed the overlapping issue */}
         <nav className="flex items-center text-sm mb-8">
           <a href="/" className="text-muted-foreground hover:text-primary">Home</a>
           <ChevronRight className="h-3 w-3 mx-2 text-muted-foreground" />
           <a href="/shop" className="text-muted-foreground hover:text-primary">Shop</a>
           <ChevronRight className="h-3 w-3 mx-2 text-muted-foreground" />
-          <span className="text-primary font-medium">{product.name}</span>
+          <span className="text-primary font-medium truncate max-w-[200px] md:max-w-full">{product.name}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
