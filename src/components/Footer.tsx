@@ -8,10 +8,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="font-serif text-xl font-semibold">Bisora</h3>
-            <p className="text-primary-foreground/80 max-w-xs">
-              Premium fashion and accessories brand providing high-quality, stylish products
-              that combine comfort with elegance for discerning customers.
-            </p>
+            <p className="text-primary-foreground/80 max-w-xs">Birsora is a leading furniture manufacturer dedicated to crafting high-quality tables, almirahs, ironing tables, cupboards, and more. With a commitment to exceptional craftsmanship and innovative design, we transform spaces into functional and aesthetic environments</p>
             <div className="flex space-x-4 pt-2">
               <a href="https://www.facebook.com/people/Bisora/100088083387315/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
