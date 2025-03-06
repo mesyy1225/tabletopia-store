@@ -78,7 +78,7 @@ const About: React.FC = () => {
             }} transition={{
               duration: 0.6
             }} className="order-1 lg:order-2 h-[400px] md:h-[500px] rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Bisora fashion collection" className="w-full h-full object-cover" />
+                <img alt="Bisora fashion collection" className="w-full h-full object-cover" src="/lovable-uploads/c0eda8a5-90aa-4477-a353-8f7c26363615.jpg" />
               </motion.div>
             </div>
           </div>
