@@ -58,7 +58,7 @@ const Index: React.FC = () => {
             }} viewport={{
               once: true
             }} className="relative h-[600px] rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Fashion design workshop" className="object-cover h-full w-full" />
+                <img alt="Fashion design workshop" className="object-cover h-full w-full" src="/lovable-uploads/bd57dbe4-9301-4540-bddd-af928d6a0a2d.jpg" />
               </motion.div>
             </div>
           </div>
