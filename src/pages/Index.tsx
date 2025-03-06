@@ -34,9 +34,7 @@ const Index: React.FC = () => {
                   Exceptional Quality in Every Detail
                 </h2>
                 <p className="text-muted-foreground">At Birsora, we follow a meticulous process to craft high-quality furniture that blends durability with elegance. From selecting the finest raw materials to precision cutting and expert assembly, every step is handled with care to ensure exceptional craftsmanship and long-lasting value.</p>
-                <p className="text-muted-foreground">
-                  Each piece passes through the hands of skilled artisans who carefully craft and finish the products to bring out their natural beauty. The result is fashion that's not just functional, but a work of art that tells a story.
-                </p>
+                <p className="text-muted-foreground">Our team of skilled artisans and designers work together to bring your vision to life. Using advanced techniques and quality finishes, we create furniture that meets both aesthetic and functional needs. Every piece undergoes strict quality checks before reaching your space, ensuring perfection in every detail.</p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div>
                     <h3 className="font-medium text-xl mb-2">Quality Materials</h3>
