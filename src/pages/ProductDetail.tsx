@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "@/lib/data";
@@ -19,6 +18,10 @@ const ProductDetail: React.FC = () => {
 
   const productId = parseInt(id || "0");
   const product = getProductById(productId);
+
+  const formatPrice = (price: number) => {
+    return `LKR ${price.toLocaleString('en-LK')}`;
+  };
 
   if (!product) {
     return (
@@ -108,7 +111,7 @@ const ProductDetail: React.FC = () => {
               </span>
             </div>
             
-            <div className="text-2xl font-semibold mb-6">${product.price}</div>
+            <div className="text-2xl font-semibold mb-6">{formatPrice(product.price)}</div>
             
             <p className="text-muted-foreground mb-6">
               {product.description}
@@ -129,7 +132,6 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
 
-            {/* Stock Status */}
             <div className="flex items-center mb-8">
               {product.inStock ? (
                 <div className="flex items-center text-green-600">
@@ -144,7 +146,6 @@ const ProductDetail: React.FC = () => {
               )}
             </div>
             
-            {/* Quantity Selector */}
             <div className="mb-8">
               <h3 className="text-sm font-semibold mb-2">Quantity</h3>
               <div className="flex items-center">
@@ -167,7 +168,6 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
             
-            {/* Add to Cart Button */}
             <Button 
               size="lg" 
               onClick={handleAddToCart} 
@@ -178,7 +178,6 @@ const ProductDetail: React.FC = () => {
               Add to Cart
             </Button>
             
-            {/* Categories */}
             <div className="mt-8">
               <h3 className="text-sm font-semibold mb-2">Categories</h3>
               <div className="flex flex-wrap gap-2">
@@ -195,7 +194,6 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
         
-        {/* Reviews Section */}
         <div className="reviews-section mb-20">
           <h2 className="text-2xl font-serif font-bold mb-8">Customer Reviews</h2>
           

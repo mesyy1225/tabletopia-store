@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Updated slideshow images with stock fashion images
+// Updated slideshow images with better furniture images
 const slideImages = [
-  "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+  "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80",
+  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 ];
 
 const Hero: React.FC = () => {
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
           >
             <img
               src={image}
-              alt={`Fashion slideshow ${index + 1}`}
+              alt={`Furniture slideshow ${index + 1}`}
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
             <img 
               src="/lovable-uploads/188afeac-f211-4f16-bbfa-8018bbc74324.png" 
               alt="Bisora Logo" 
-              className="h-24 md:h-32"
+              className="h-20 md:h-24 w-auto object-contain"
             />
           </div>
           

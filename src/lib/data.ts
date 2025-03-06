@@ -40,7 +40,7 @@ export const products: Product[] = [
     name: "Elegance Dining Table",
     shortDescription: "Minimalist solid oak dining table",
     description: "Our best-selling Elegance Dining Table is crafted from premium solid oak with a natural finish that highlights the wood's beautiful grain patterns. The table's clean lines and minimalist design make it a versatile centerpiece for any dining room. The table comfortably seats 6 people and is built to last for generations.",
-    price: 1299,
+    price: 135000,
     images: [
       "https://i.ibb.co/gMcKWyFk/elegance-dining-1.jpg",
       "https://i.ibb.co/Mkpp82D7/elegance-dining-2.jpg",
@@ -82,7 +82,7 @@ export const products: Product[] = [
     name: "Nordic Coffee Table",
     shortDescription: "Scandinavian-inspired walnut coffee table",
     description: "The Nordic Coffee Table combines Scandinavian simplicity with impeccable craftsmanship. Made from solid walnut with a warm, rich finish, this coffee table features subtle rounded edges and tapered legs for a light, floating appearance. The spacious tabletop provides ample space for books, décor, and beverages, while the clean design ensures it will complement any living space.",
-    price: 749,
+    price: 74900,
     images: [
       "https://i.ibb.co/GfhnC8Gy/coffee-table-1.jpg",
       "https://i.ibb.co/LdHJRGZY/coffee-table-2.jpg",
@@ -116,7 +116,7 @@ export const products: Product[] = [
     name: "Executive Desk",
     shortDescription: "Sophisticated mahogany executive desk",
     description: "The Executive Desk is the ultimate statement piece for any home office or professional workspace. Crafted from premium mahogany with a deep, lustrous finish, this desk features two spacious drawers with soft-close mechanisms and brass hardware. The generous work surface provides ample space for productivity, while the elegant profile ensures this desk will become a treasured piece in your workspace.",
-    price: 1899,
+    price: 189900,
     images: [
       "https://i.ibb.co/997VBVdX/desk-1.jpg",
       "https://i.ibb.co/LXkYMk1S/desk-2.jpg",
@@ -157,13 +157,12 @@ export const products: Product[] = [
     name: "Industrial Console Table",
     shortDescription: "Rustic iron and reclaimed wood console",
     description: "The Industrial Console Table combines rugged iron legs with a top made from reclaimed pine, creating a perfect blend of industrial style and sustainable design. Each table is unique due to the natural variations in the reclaimed wood, showing distinctive markings and grain patterns. The slender profile makes it ideal for entryways, behind sofas, or against walls in any room where you want to add character and functionality.",
-    price: 599,
+    price: 59900,
     images: [
-      "https://i.ibb.co/rGKY10Q/console-1.jpg",
-      "https://i.ibb.co/C5trgBS/console-2.jpg",
-      "https://i.ibb.co/yc3fSxr/console-3.jpg",
-      "https://i.ibb.co/LzvGcpd/console-4.jpg",
-      "https://i.ibb.co/dJJHM0t/console-5.jpg"
+      "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1581428982868-e410dd047a90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80",
+      "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
     ],
     categories: ["Console", "Industrial", "Reclaimed"],
     material: "Iron and Reclaimed Pine",
@@ -199,11 +198,11 @@ export const products: Product[] = [
     name: "Modern Meeting Table",
     shortDescription: "Sleek glass and steel conference table",
     description: "The Modern Meeting Table is designed for contemporary office spaces and meeting rooms. The tempered glass top is supported by a precision-engineered steel base, creating a sophisticated floating effect. This table comfortably seats 8 people and includes integrated cable management for tech-ready meetings. The clean lines and transparent surface maximize the sense of space in any room.",
-    price: 2499,
+    price: 249900,
     images: [
-      "https://i.ibb.co/HLMp9k6/meeting-1.jpg",
-      "https://i.ibb.co/TB58WbT/meeting-2.jpg",
-      "https://i.ibb.co/ycGVmZY/meeting-3.jpg"
+      "https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1577140917170-285929fb55b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1457&q=80",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     ],
     categories: ["Conference", "Glass", "Modern", "Office"],
     material: "Tempered Glass and Steel",
@@ -231,11 +230,11 @@ export const products: Product[] = [
     name: "Artisan Side Table",
     shortDescription: "Hand-carved mango wood side table",
     description: "Each Artisan Side Table is a unique piece of functional art, hand-carved by skilled craftspeople from sustainable mango wood. The intricate geometric patterns are inspired by traditional designs but with a contemporary twist. The compact size makes it perfect as a bedside table or accent piece in any room. By purchasing this table, you're supporting traditional craftsmanship and sustainable forestry practices.",
-    price: 399,
+    price: 39900,
     images: [
-      "https://images.unsplash.com/photo-1595428774223-ef52624120ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1503174971373-b1f69c758a83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+      "https://images.unsplash.com/photo-1631455853929-ba06397f9a69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1097&q=80",
+      "https://images.unsplash.com/photo-1601590384651-c3aca464b059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     ],
     categories: ["Side Table", "Artisan", "Mango Wood"],
     material: "Mango Wood",

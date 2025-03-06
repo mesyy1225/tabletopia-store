@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "@/lib/data";
@@ -22,6 +21,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
     addToCart(product, 1);
   };
 
+  const formatPrice = (price: number) => {
+    return `LKR ${price.toLocaleString('en-LK')}`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -40,7 +43,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
             loading="lazy"
           />
           
-          {/* Quick action buttons */}
           <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
             <Button
               size="icon"
@@ -64,7 +66,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
             </Button>
           </div>
           
-          {/* Category tag */}
           {product.categories[0] && (
             <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-primary">
               {product.categories[0]}
@@ -75,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
         <div className="pt-4 pb-1 px-1">
           <div className="flex justify-between items-start mb-1">
             <h3 className="font-medium text-lg text-primary/90">{product.name}</h3>
-            <span className="text-lg font-semibold text-primary">${product.price}</span>
+            <span className="text-lg font-semibold text-primary">{formatPrice(product.price)}</span>
           </div>
           
           <p className="text-sm text-muted-foreground mb-2 line-clamp-2">

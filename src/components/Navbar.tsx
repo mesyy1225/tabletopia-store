@@ -51,12 +51,12 @@ const Navbar: React.FC = () => {
       )}
     >
       <nav className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - Fixed alignment */}
         <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/188afeac-f211-4f16-bbfa-8018bbc74324.png" 
             alt="Bisora Logo" 
-            className="h-12 md:h-14"
+            className="h-10 md:h-12 w-auto object-contain"
           />
           <span className="sr-only">Bisora</span>
         </Link>
