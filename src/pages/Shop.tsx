@@ -3,8 +3,11 @@ import React from "react";
 import Layout from "@/components/Layout";
 import ProductGrid from "@/components/ProductGrid";
 import { motion } from "framer-motion";
+import { getAllProducts } from "@/lib/data";
 
 const Shop: React.FC = () => {
+  const products = getAllProducts();
+  
   return (
     <Layout>
       <div className="pt-24 pb-16">
@@ -28,7 +31,7 @@ const Shop: React.FC = () => {
         {/* Products Section */}
         <section className="py-12">
           <div className="container mx-auto px-6">
-            <ProductGrid />
+            <ProductGrid products={products} />
           </div>
         </section>
       </div>

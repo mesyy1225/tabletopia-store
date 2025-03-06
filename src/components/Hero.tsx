@@ -121,6 +121,14 @@ const Hero: React.FC = () => {
           initial="hidden"
           animate={controls}
         >
+          <div className="mb-6">
+            <img 
+              src="/lovable-uploads/188afeac-f211-4f16-bbfa-8018bbc74324.png" 
+              alt="Bisora Logo" 
+              className="h-24 md:h-32"
+            />
+          </div>
+          
           <motion.div 
             variants={itemVariants}
             className="inline-block mb-3 text-sm font-semibold tracking-wider uppercase bg-primary/30 backdrop-blur-sm px-3 py-1 rounded-full text-primary-foreground/90"

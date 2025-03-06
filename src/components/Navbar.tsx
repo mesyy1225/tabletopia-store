@@ -52,8 +52,13 @@ const Navbar: React.FC = () => {
     >
       <nav className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-primary font-serif text-2xl md:text-3xl font-bold">
-          WoodCraft
+        <Link to="/" className="flex items-center">
+          <img 
+            src="/lovable-uploads/188afeac-f211-4f16-bbfa-8018bbc74324.png" 
+            alt="Bisora Logo" 
+            className="h-12 md:h-14"
+          />
+          <span className="sr-only">Bisora</span>
         </Link>
 
         {/* Desktop Navigation */}
