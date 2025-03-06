@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Product, getAllCategories, getAllMaterials } from "@/lib/data";
 import ProductCard from "./ProductCard";
@@ -15,24 +14,21 @@ interface ProductGridProps {
 }
 
 const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
+  const maxPrice = Math.max(...products.map(p => p.price));
+  
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 3000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const allCategories = getAllCategories();
   const allMaterials = getAllMaterials();
 
-  // Find min and max prices from all products
-  const maxPrice = Math.max(...products.map(p => p.price));
-
-  // Apply filters when they change
   useEffect(() => {
     let result = [...products];
 
-    // Apply search filter
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       result = result.filter(
@@ -43,21 +39,18 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
       );
     }
 
-    // Apply category filter
     if (selectedCategories.length > 0) {
       result = result.filter((product) =>
         product.categories.some((category) => selectedCategories.includes(category))
       );
     }
 
-    // Apply material filter
     if (selectedMaterials.length > 0) {
       result = result.filter((product) =>
         selectedMaterials.includes(product.material)
       );
     }
 
-    // Apply price range filter
     result = result.filter(
       (product) => product.price >= priceRange[0] && product.price <= priceRange[1]
     );
@@ -65,7 +58,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
     setFilteredProducts(result);
   }, [searchTerm, selectedCategories, selectedMaterials, priceRange, products]);
 
-  // Toggle category selection
   const handleCategoryChange = (category: string) => {
     setSelectedCategories((prev) =>
       prev.includes(category)
@@ -74,7 +66,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
     );
   };
 
-  // Toggle material selection
   const handleMaterialChange = (material: string) => {
     setSelectedMaterials((prev) =>
       prev.includes(material)
@@ -83,7 +74,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
     );
   };
 
-  // Reset all filters
   const handleResetFilters = () => {
     setSearchTerm("");
     setSelectedCategories([]);
@@ -93,7 +83,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
 
   return (
     <div className="w-full">
-      {/* Mobile filter toggle */}
       <div className="lg:hidden mb-6 flex justify-between items-center">
         <div className="relative w-full mr-2">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -116,7 +105,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Filters - Desktop */}
         <div className="hidden lg:block w-64 flex-shrink-0 space-y-8">
           <div>
             <h3 className="font-medium text-lg mb-4">Search</h3>
@@ -201,7 +189,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
           </Button>
         </div>
 
-        {/* Filters - Mobile */}
         <AnimatePresence>
           {isFilterOpen && (
             <motion.div
@@ -295,7 +282,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
           )}
         </AnimatePresence>
 
-        {/* Products Grid */}
         <div className="flex-1">
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">
