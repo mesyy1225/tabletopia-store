@@ -58,9 +58,7 @@ const About: React.FC = () => {
                 <p className="text-muted-foreground mb-4">
                   Bisora was founded with a clear vision: to create fashion that combines sophistication, comfort, and sustainability. Our mission is to empower individuals to express themselves through thoughtfully designed products that respect both people and the planet.
                 </p>
-                <p className="text-muted-foreground mb-6">
-                  We believe that fashion should be accessible yet exceptional, with each piece telling a story of craftsmanship and care. From sourcing materials to packaging, we consider every detail in our commitment to responsible fashion.
-                </p>
+                <p className="text-muted-foreground mb-6">Crafting Quality, Enhancing Every Space</p>
                 <Button asChild>
                   <Link to="/shop">
                     Explore Our Collection
