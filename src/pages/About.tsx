@@ -53,9 +53,7 @@ const About: React.FC = () => {
                   Our Mission
                 </span>
                 <h2 className="text-3xl font-serif font-bold mb-6">Crafting Quality, Enhancing Every Space</h2>
-                <p className="text-muted-foreground mb-4">
-                  Bisora was founded with a clear vision: to create fashion that combines sophistication, comfort, and sustainability. Our mission is to empower individuals to express themselves through thoughtfully designed products that respect both people and the planet.
-                </p>
+                <p className="text-muted-foreground mb-4">At Birsora, our mission is to craft high-quality furniture that seamlessly blends functionality, durability, and aesthetic appeal. We are dedicated to creating timeless pieces that enhance homes and workspaces, ensuring comfort, elegance, and lasting value for every customer.</p>
                 <p className="text-muted-foreground mb-6">Crafting Quality, Enhancing Every Space</p>
                 <Button asChild>
                   <Link to="/shop">
