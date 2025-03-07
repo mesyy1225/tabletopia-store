@@ -25,6 +25,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
   const formatPrice = (price: number) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
   };
+  
+  // Ensure the image exists, use a placeholder if not
+  const productImage = product.images && product.images.length > 0 && product.images[0] 
+    ? product.images[0] 
+    : "/placeholder.svg";
 
   return (
     <motion.div
@@ -38,10 +43,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
       <Link to={`/product/${product.id}`} className="block h-full">
         <div className="product-image-container relative overflow-hidden rounded-lg h-60 md:h-72">
           <img
-            src={product.images[0]}
+            src={productImage}
             alt={product.name}
             className="product-image h-full w-full object-cover"
             loading="lazy"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.src = "/placeholder.svg";
+            }}
           />
           
           <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">

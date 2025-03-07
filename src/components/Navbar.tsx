@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
           : "py-5 bg-transparent"
       )}
     >
-      <nav className="container mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo - Fixed alignment */}
         <Link to="/" className="flex items-center">
           <img 
@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.3 }}
             className="md:hidden bg-white border-t mt-3"
           >
-            <div className="container mx-auto py-4 flex flex-col">
+            <div className="max-w-7xl mx-auto py-4 flex flex-col">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}

@@ -39,6 +39,11 @@ const ProductDetail: React.FC = () => {
     );
   }
 
+  // Ensure that all product images exist, use a placeholder if not
+  const validatedImages = product.images.map(img => 
+    img ? img : "/placeholder.svg"
+  );
+
   const handleQuantityChange = (change: number) => {
     const newQuantity = quantity + change;
     if (newQuantity >= 1) {
@@ -67,14 +72,19 @@ const ProductDetail: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <img 
-                src={product.images[activeImageIndex]} 
+                src={validatedImages[activeImageIndex]} 
                 alt={product.name} 
                 className="w-full h-full object-cover object-center"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = "/placeholder.svg";
+                }}
               />
             </motion.div>
             
             <div className="image-thumbnails grid grid-cols-5 gap-2">
-              {product.images.map((image, index) => (
+              {validatedImages.map((image, index) => (
                 <div 
                   key={index}
                   className={`h-20 rounded-md overflow-hidden cursor-pointer border-2 ${
@@ -86,6 +96,11 @@ const ProductDetail: React.FC = () => {
                     src={image} 
                     alt={`${product.name} thumbnail ${index + 1}`} 
                     className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "/placeholder.svg";
+                    }}
                   />
                 </div>
               ))}
