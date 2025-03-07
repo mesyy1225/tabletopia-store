@@ -1,11 +1,14 @@
 
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 
 interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
+  avatar_url?: string;
 }
 
 interface AuthState {
@@ -23,7 +26,7 @@ interface AuthContextProps {
   state: AuthState;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -54,112 +57,142 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
   }
 };
 
-const AUTH_STORAGE_KEY = "woodcraft_auth";
-
-// Mock user database
-const mockUsers = [
-  {
-    id: 1,
-    name: "Demo User",
-    email: "demo@example.com",
-    password: "password123",
-  },
-];
-
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize state from localStorage if available
-  const initialState: AuthState = (() => {
-    if (typeof window === "undefined") {
-      return { user: null, isAuthenticated: false, isLoading: true };
-    }
-
-    try {
-      const storedAuth = localStorage.getItem(AUTH_STORAGE_KEY);
-      if (storedAuth) {
-        const { user } = JSON.parse(storedAuth);
-        return { user, isAuthenticated: !!user, isLoading: false };
-      }
-    } catch (error) {
-      console.error("Failed to parse auth from localStorage:", error);
-    }
-
-    return { user: null, isAuthenticated: false, isLoading: false };
-  })();
+  const initialState: AuthState = { 
+    user: null, 
+    isAuthenticated: false, 
+    isLoading: true 
+  };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Save auth state to localStorage
+  // Check for existing session on mount
   useEffect(() => {
-    if (typeof window !== "undefined" && !state.isLoading) {
-      localStorage.setItem(
-        AUTH_STORAGE_KEY,
-        JSON.stringify({ user: state.user })
-      );
-    }
-  }, [state.user, state.isLoading]);
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (session) {
+          // Fetch user profile data
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .single();
+          
+          const userData: User = {
+            id: session.user.id,
+            name: profile?.full_name || session.user.email?.split('@')[0] || 'User',
+            email: session.user.email || '',
+            avatar_url: profile?.avatar_url
+          };
+          
+          dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+        } else {
+          dispatch({ type: "SET_LOADING", payload: false });
+        }
+      } catch (error) {
+        console.error("Session check error:", error);
+        dispatch({ type: "SET_LOADING", payload: false });
+      }
+    };
 
-  // Mock login functionality
+    checkSession();
+
+    // Set up auth subscription
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (event === 'SIGNED_IN' && session) {
+          // Fetch user profile data
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .single();
+          
+          const userData: User = {
+            id: session.user.id,
+            name: profile?.full_name || session.user.email?.split('@')[0] || 'User',
+            email: session.user.email || '',
+            avatar_url: profile?.avatar_url
+          };
+          
+          dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+        } else if (event === 'SIGNED_OUT') {
+          dispatch({ type: "LOGOUT" });
+        }
+      }
+    );
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  // Login functionality
   const login = async (email: string, password: string) => {
     dispatch({ type: "SET_LOADING", payload: true });
 
     try {
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-      const user = mockUsers.find(
-        (u) => u.email === email && u.password === password
-      );
-
-      if (user) {
-        const { password, ...userWithoutPassword } = user;
-        dispatch({ type: "LOGIN_SUCCESS", payload: userWithoutPassword });
-        toast.success(`Welcome back, ${userWithoutPassword.name}!`);
-      } else {
-        throw new Error("Invalid email or password");
+      if (error) {
+        throw error;
       }
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Login failed");
+
+      if (data.user) {
+        toast.success("Login successful!");
+      }
+    } catch (error: any) {
+      toast.error(error.message || "Login failed");
       dispatch({ type: "SET_LOADING", payload: false });
+      throw error;
     }
   };
 
-  // Mock register functionality
+  // Register functionality
   const register = async (name: string, email: string, password: string) => {
     dispatch({ type: "SET_LOADING", payload: true });
 
     try {
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
-      // Check if user already exists
-      if (mockUsers.some((u) => u.email === email)) {
-        throw new Error("Email already in use");
-      }
-
-      // Create new user (in a real app, this would be an API call)
-      const newUser = {
-        id: mockUsers.length + 1,
-        name,
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
-      };
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
+      });
 
-      mockUsers.push(newUser);
+      if (error) {
+        throw error;
+      }
 
-      const { password: _, ...userWithoutPassword } = newUser;
-      dispatch({ type: "LOGIN_SUCCESS", payload: userWithoutPassword });
-
-      toast.success("Account created successfully!");
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Registration failed");
+      if (data.user) {
+        toast.success("Registration successful! Check your email for confirmation.");
+      }
+    } catch (error: any) {
+      toast.error(error.message || "Registration failed");
       dispatch({ type: "SET_LOADING", payload: false });
+      throw error;
     }
   };
 
   // Logout functionality
-  const logout = () => {
-    dispatch({ type: "LOGOUT" });
-    toast.info("Logged out successfully");
+  const logout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        throw error;
+      }
+      toast.info("Logged out successfully");
+    } catch (error: any) {
+      toast.error(error.message || "Logout failed");
+    }
   };
 
   return (

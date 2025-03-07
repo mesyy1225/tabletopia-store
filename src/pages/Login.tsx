@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import Layout from "@/components/Layout";
@@ -17,17 +17,37 @@ const Login: React.FC = () => {
   const { login, state } = useAuth();
   const navigate = useNavigate();
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (state.isAuthenticated && !state.isLoading) {
+      navigate("/");
+    }
+  }, [state.isAuthenticated, state.isLoading, navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     
     try {
       await login(email, password);
-      navigate("/");
+      // Auth state will update via the Supabase subscription
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to login");
     }
   };
+
+  if (state.isLoading) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-12 flex items-center justify-center">
+          <div className="flex flex-col items-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <p className="mt-4 text-muted-foreground">Loading...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
