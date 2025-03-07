@@ -1,3 +1,4 @@
+
 import React from "react";
 import Layout from "@/components/Layout";
 import { ArrowRight } from "lucide-react";
@@ -103,23 +104,23 @@ const About: React.FC = () => {
               {[{
               year: "2019",
               title: "The Beginning",
-              description: "Bisora started as a small collection of handcrafted fashion items, born from a passion to create unique pieces that stand out."
+              description: "Birsora started as a small workshop crafting high-quality furniture, driven by a passion for exceptional craftsmanship and timeless design."
             }, {
               year: "2020",
               title: "Growing Presence",
-              description: "We expanded our collection and reached more customers, focusing on building a community around our brand values."
+              description: "We expanded our product range, reaching more customers and building a strong reputation for durable and elegant furniture."
             }, {
               year: "2021",
               title: "Sustainability Focus",
-              description: "We committed to more sustainable practices, improving our materials sourcing and production processes."
+              description: "We committed to sustainable practices, improving material sourcing and adopting eco-friendly production methods."
             }, {
               year: "2022",
               title: "Going Digital",
-              description: "Our online presence expanded, allowing us to connect with customers across Kenya and beyond."
+              description: "Our online presence grew, making it easier for customers to explore and purchase our furniture from anywhere."
             }, {
               year: "Today",
               title: "A Growing Family",
-              description: "Today, Bisora continues to grow, guided by our founding principles and the support of our amazing customers."
+              description: "Birsora continues to grow, staying true to our values of quality, innovation, and customer satisfaction."
             }].map((milestone, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
