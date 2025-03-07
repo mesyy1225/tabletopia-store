@@ -7,10 +7,12 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import CartPopup from "./CartPopup";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { state: cartState } = useCart();
   const { state: authState, logout } = useAuth();
   const location = useLocation();
@@ -28,6 +30,7 @@ const Navbar: React.FC = () => {
   // Close mobile menu when changing routes
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsCartOpen(false);
   }, [location.pathname]);
 
   const navItems = [
@@ -41,10 +44,14 @@ const Navbar: React.FC = () => {
     return location.pathname === path;
   };
 
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-8 lg:px-12",
+        "fixed top-0 left-0 right-0 z-40 transition-all duration-300 px-6 md:px-8 lg:px-12",
         isScrolled
           ? "py-3 bg-white/90 backdrop-blur-sm shadow-sm"
           : "py-5 bg-transparent"
@@ -79,7 +86,11 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Right Side: Cart & Auth */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/cart" className="relative">
+          <button 
+            className="relative" 
+            onClick={toggleCart}
+            aria-label="Shopping Cart"
+          >
             <Button variant="ghost" className="p-2" aria-label="Shopping Cart">
               <ShoppingCart className="h-5 w-5" />
               {cartState.totalItems > 0 && (
@@ -88,7 +99,7 @@ const Navbar: React.FC = () => {
                 </span>
               )}
             </Button>
-          </Link>
+          </button>
 
           {authState.isAuthenticated ? (
             <div className="flex items-center space-x-2">
@@ -114,7 +125,11 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex items-center md:hidden space-x-2">
-          <Link to="/cart" className="relative mr-2">
+          <button 
+            className="relative mr-2"
+            onClick={toggleCart}
+            aria-label="Shopping Cart"
+          >
             <Button variant="ghost" className="p-1 h-9 w-9" aria-label="Shopping Cart">
               <ShoppingCart className="h-5 w-5" />
               {cartState.totalItems > 0 && (
@@ -123,7 +138,7 @@ const Navbar: React.FC = () => {
                 </span>
               )}
             </Button>
-          </Link>
+          </button>
           <Button
             variant="ghost"
             className="p-1 h-9 w-9"
@@ -188,6 +203,9 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Cart Popup */}
+      <CartPopup isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 };
