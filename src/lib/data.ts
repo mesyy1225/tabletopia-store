@@ -1,3 +1,4 @@
+
 export interface Product {
   id: number;
   name: string;
@@ -16,6 +17,7 @@ export interface Product {
   featured: boolean;
   rating: number;
   reviews: Review[];
+  colors?: string[];
 }
 
 export interface Review {
@@ -34,13 +36,36 @@ export interface User {
   password: string;
 }
 
+const productDescription = `Made with high-quality melamine table, designed for durability, functionality, and a sleek aesthetic. Crafted from 15mm particle melamine board, 1.5"X1.5" powder coated steel frame and legs. This table is perfect for home, office, or commercial use.
+
+Features:
+✔ Sturdy & Durable – Made from premium 15mm melamine-coated particleboard for a smooth, scratch-resistant surface.
+✔ Modern Design – Available in White, American Ash White, Black, and Teak finishes to match any décor.
+✔ Easy to Clean – Resistant to stains, moisture, and everyday wear.
+✔ Multi-Purpose Use – Ideal for dining, workstations, study desks, conference rooms, and more.
+✔ Customizable Sizes – Various dimensions available to suit your needs.
+(1) 24" X 32" = Rs.10,500
+(2) 24" X 36" = Rs.11,500
+(3) 24" X 84" = Rs.13,500
+(4) 24" X 60" = Rs.15,000
+
+COLOURS:
+⚪ White
+🔘 American Ash White
+⚫ Black 
+🟤 Teak
+
+💳 Cash on Delivery (COD) Available!`;
+
+const tableColors = ["White", "American Ash White", "Black", "Teak"];
+
 export const products: Product[] = [
   {
     id: 1,
     name: "Elegance Dining Table",
-    shortDescription: "Minimalist solid oak dining table",
-    description: "Our best-selling Elegance Dining Table is crafted from premium solid oak with a natural finish that highlights the wood's beautiful grain patterns. The table's clean lines and minimalist design make it a versatile centerpiece for any dining room. The table comfortably seats 6 people and is built to last for generations.",
-    price: 135000,
+    shortDescription: "Modern melamine dining table with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://i.ibb.co/gMcKWyFk/elegance-dining-1.jpg",
       "https://i.ibb.co/Mkpp82D7/elegance-dining-2.jpg",
@@ -48,16 +73,17 @@ export const products: Product[] = [
       "https://i.ibb.co/p6SVT1Wj/elegance-dining-4.jpg",
       "https://i.ibb.co/N27prg9D/rustic-dining-1.jpg"
     ],
-    categories: ["Dining", "Oak", "Modern"],
-    material: "Solid Oak",
+    categories: ["Dining", "Modern", "Office"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 90,
-      length: 180,
-      height: 75
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: true,
     rating: 4.8,
+    colors: tableColors,
     reviews: [
       {
         id: 1,
@@ -80,9 +106,9 @@ export const products: Product[] = [
   {
     id: 2,
     name: "Nordic Coffee Table",
-    shortDescription: "Scandinavian-inspired walnut coffee table",
-    description: "The Nordic Coffee Table combines Scandinavian simplicity with impeccable craftsmanship. Made from solid walnut with a warm, rich finish, this coffee table features subtle rounded edges and tapered legs for a light, floating appearance. The spacious tabletop provides ample space for books, décor, and beverages, while the clean design ensures it will complement any living space.",
-    price: 74900,
+    shortDescription: "Modern melamine coffee table with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://i.ibb.co/GfhnC8Gy/coffee-table-1.jpg",
       "https://i.ibb.co/LdHJRGZY/coffee-table-2.jpg",
@@ -90,23 +116,24 @@ export const products: Product[] = [
       "https://i.ibb.co/MWYyYrn/coffee-table-4.jpg",
       "https://i.ibb.co/yFbZFP3C/coffee-table-5.jpg"
     ],
-    categories: ["Coffee", "Walnut", "Scandinavian"],
-    material: "Solid Walnut",
+    categories: ["Coffee", "Modern", "Living Room"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 60,
-      length: 120,
-      height: 45
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: true,
     rating: 4.7,
+    colors: tableColors,
     reviews: [
       {
         id: 3,
         userId: 3,
         userName: "Emma Wilson",
         rating: 5,
-        comment: "This coffee table exceeded my expectations! The walnut is gorgeous and the quality is outstanding.",
+        comment: "This coffee table exceeded my expectations! The quality is outstanding.",
         date: "2023-09-02"
       }
     ]
@@ -114,25 +141,26 @@ export const products: Product[] = [
   {
     id: 3,
     name: "Executive Desk",
-    shortDescription: "Sophisticated mahogany executive desk",
-    description: "The Executive Desk is the ultimate statement piece for any home office or professional workspace. Crafted from premium mahogany with a deep, lustrous finish, this desk features two spacious drawers with soft-close mechanisms and brass hardware. The generous work surface provides ample space for productivity, while the elegant profile ensures this desk will become a treasured piece in your workspace.",
-    price: 189900,
+    shortDescription: "Modern melamine executive desk with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://i.ibb.co/997VBVdX/desk-1.jpg",
       "https://i.ibb.co/LXkYMk1S/desk-2.jpg",
       "https://i.ibb.co/GvWKd096/desk-3.jpg",
       "https://i.ibb.co/hFkLF0pG/desk-4.jpg"
     ],
-    categories: ["Office", "Mahogany", "Executive"],
-    material: "Mahogany",
+    categories: ["Office", "Modern", "Desk"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 80,
-      length: 160,
-      height: 75
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: false,
     rating: 4.9,
+    colors: tableColors,
     reviews: [
       {
         id: 4,
@@ -155,25 +183,26 @@ export const products: Product[] = [
   {
     id: 4,
     name: "Industrial Console Table",
-    shortDescription: "Rustic iron and reclaimed wood console",
-    description: "The Industrial Console Table combines rugged iron legs with a top made from reclaimed pine, creating a perfect blend of industrial style and sustainable design. Each table is unique due to the natural variations in the reclaimed wood, showing distinctive markings and grain patterns. The slender profile makes it ideal for entryways, behind sofas, or against walls in any room where you want to add character and functionality.",
-    price: 59900,
+    shortDescription: "Modern melamine console table with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1581428982868-e410dd047a90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80",
       "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
     ],
-    categories: ["Console", "Industrial", "Reclaimed"],
-    material: "Iron and Reclaimed Pine",
+    categories: ["Console", "Modern", "Living Room"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 40,
-      length: 120,
-      height: 80
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: true,
     rating: 4.6,
+    colors: tableColors,
     reviews: [
       {
         id: 6,
@@ -188,7 +217,7 @@ export const products: Product[] = [
         userId: 7,
         userName: "Michelle Garcia",
         rating: 4,
-        comment: "Love the rustic look and sturdiness of this table. The wood has some more variation than shown in the photos, but still beautiful.",
+        comment: "Love the modern look and sturdiness of this table. The finish is exactly as shown in the photos.",
         date: "2023-07-15"
       }
     ]
@@ -196,24 +225,25 @@ export const products: Product[] = [
   {
     id: 5,
     name: "Modern Meeting Table",
-    shortDescription: "Sleek glass and steel conference table",
-    description: "The Modern Meeting Table is designed for contemporary office spaces and meeting rooms. The tempered glass top is supported by a precision-engineered steel base, creating a sophisticated floating effect. This table comfortably seats 8 people and includes integrated cable management for tech-ready meetings. The clean lines and transparent surface maximize the sense of space in any room.",
-    price: 249900,
+    shortDescription: "Modern melamine conference table with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1577140917170-285929fb55b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1457&q=80",
       "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     ],
-    categories: ["Conference", "Glass", "Modern", "Office"],
-    material: "Tempered Glass and Steel",
+    categories: ["Conference", "Modern", "Office"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 120,
-      length: 240,
-      height: 75
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: false,
     rating: 4.7,
+    colors: tableColors,
     reviews: [
       {
         id: 8,
@@ -228,31 +258,32 @@ export const products: Product[] = [
   {
     id: 6,
     name: "Artisan Side Table",
-    shortDescription: "Hand-carved mango wood side table",
-    description: "Each Artisan Side Table is a unique piece of functional art, hand-carved by skilled craftspeople from sustainable mango wood. The intricate geometric patterns are inspired by traditional designs but with a contemporary twist. The compact size makes it perfect as a bedside table or accent piece in any room. By purchasing this table, you're supporting traditional craftsmanship and sustainable forestry practices.",
-    price: 39900,
+    shortDescription: "Modern melamine side table with steel frame",
+    description: productDescription,
+    price: 13500,
     images: [
       "https://images.unsplash.com/photo-1631455853929-ba06397f9a69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1097&q=80",
       "https://images.unsplash.com/photo-1601590384651-c3aca464b059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     ],
-    categories: ["Side Table", "Artisan", "Mango Wood"],
-    material: "Mango Wood",
+    categories: ["Side Table", "Modern", "Living Room"],
+    material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
-      width: 45,
-      length: 45,
-      height: 55
+      width: 24,
+      length: 48,
+      height: 36
     },
     inStock: true,
     featured: true,
     rating: 4.9,
+    colors: tableColors,
     reviews: [
       {
         id: 9,
         userId: 9,
         userName: "Sophia Martinez",
         rating: 5,
-        comment: "This side table is a work of art! The craftsmanship is amazing and it's become the focal point of my living room.",
+        comment: "This side table is perfect! The quality is amazing and it matches perfectly with our decor.",
         date: "2023-09-05"
       },
       {

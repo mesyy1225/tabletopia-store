@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "@/lib/data";
@@ -87,7 +88,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
             <Star className="h-4 w-4 fill-current" />
             <span className="ml-1 text-sm font-medium">{product.rating}</span>
             <span className="mx-1 text-muted-foreground text-sm">•</span>
-            <span className="text-sm font-medium text-primary/70">{product.material}</span>
+            <span className="text-sm font-medium text-primary/70">{product.material.split(' with')[0]}</span>
           </div>
         </div>
       </Link>

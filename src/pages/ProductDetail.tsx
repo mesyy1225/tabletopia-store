@@ -5,9 +5,11 @@ import { getProductById } from "@/lib/data";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { Minus, Plus, ShoppingCart, Star, ChevronRight, Check, Info } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Star, Check, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/components/ui/use-toast";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,6 +18,7 @@ const ProductDetail: React.FC = () => {
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
 
   const productId = parseInt(id || "0");
   const product = getProductById(productId);
@@ -54,15 +57,6 @@ const ProductDetail: React.FC = () => {
   return (
     <Layout>
       <div className="container mx-auto px-6 py-8">
-        {/* Breadcrumb - Fixed the overlapping issue */}
-        <nav className="flex items-center text-sm mb-8">
-          <a href="/" className="text-muted-foreground hover:text-primary">Home</a>
-          <ChevronRight className="h-3 w-3 mx-2 text-muted-foreground" />
-          <a href="/shop" className="text-muted-foreground hover:text-primary">Shop</a>
-          <ChevronRight className="h-3 w-3 mx-2 text-muted-foreground" />
-          <span className="text-primary font-medium truncate max-w-[200px] md:max-w-full">{product.name}</span>
-        </nav>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           {/* Product Images */}
           <div className="product-images">
@@ -114,17 +108,17 @@ const ProductDetail: React.FC = () => {
             
             <div className="text-2xl font-semibold mb-6">{formatPrice(product.price)}</div>
             
-            <p className="text-muted-foreground mb-6">
-              {product.description}
+            <p className="text-muted-foreground mb-6 whitespace-pre-line">
+              {product.description.split('\n\n')[0]}
             </p>
             
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <div className="p-4 bg-secondary/50 rounded-md">
                 <h3 className="font-medium mb-2">Dimensions</h3>
                 <p className="text-sm text-muted-foreground">
-                  W: {product.dimensions.width}cm <br />
-                  L: {product.dimensions.length}cm <br />
-                  H: {product.dimensions.height}cm
+                  W: {product.dimensions.width}" <br />
+                  L: {product.dimensions.length}" <br />
+                  H: {product.dimensions.height}"
                 </p>
               </div>
               <div className="p-4 bg-secondary/50 rounded-md">
@@ -132,6 +126,24 @@ const ProductDetail: React.FC = () => {
                 <p className="text-sm text-muted-foreground">{product.material}</p>
               </div>
             </div>
+
+            {product.colors && (
+              <div className="mb-8">
+                <h3 className="text-sm font-semibold mb-3">Available Colors</h3>
+                <RadioGroup 
+                  defaultValue={product.colors[0]} 
+                  onValueChange={setSelectedColor}
+                  className="flex flex-wrap gap-4"
+                >
+                  {product.colors.map((color) => (
+                    <div key={color} className="flex items-center space-x-2">
+                      <RadioGroupItem value={color} id={`color-${color}`} />
+                      <Label htmlFor={`color-${color}`}>{color}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+            )}
 
             <div className="flex items-center mb-8">
               {product.inStock ? (
@@ -191,6 +203,19 @@ const ProductDetail: React.FC = () => {
                   </span>
                 ))}
               </div>
+            </div>
+
+            <div className="mt-8 bg-secondary/30 p-4 rounded-md">
+              <p className="text-sm font-medium mb-2">Available Options:</p>
+              <div className="text-sm text-muted-foreground whitespace-pre-line">
+                {product.description.includes('Customizable Sizes') && 
+                  product.description.split('Customizable Sizes')[1].split('\n\n')[0]}
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center">
+              <span className="font-medium text-green-600 mr-2">💳</span>
+              <span className="text-sm font-medium">Cash on Delivery (COD) Available!</span>
             </div>
           </div>
         </div>
