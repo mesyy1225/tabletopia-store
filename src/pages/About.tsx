@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/Layout";
 import { ArrowRight } from "lucide-react";
@@ -53,9 +52,7 @@ const About: React.FC = () => {
                 <span className="text-sm font-semibold tracking-wider uppercase text-primary/70 mb-3 block">
                   Our Mission
                 </span>
-                <h2 className="text-3xl font-serif font-bold mb-6">
-                  Empowering Fashion With Purpose
-                </h2>
+                <h2 className="text-3xl font-serif font-bold mb-6">Crafting Quality, Enhancing Every Space</h2>
                 <p className="text-muted-foreground mb-4">
                   Bisora was founded with a clear vision: to create fashion that combines sophistication, comfort, and sustainability. Our mission is to empower individuals to express themselves through thoughtfully designed products that respect both people and the planet.
                 </p>
