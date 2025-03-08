@@ -18,7 +18,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
   const { addToCart } = useCart();
   const { state: authState } = useAuth();
   const [isHovered, setIsHovered] = useState(false);
-  const [imgError, setImgError] = useState(false);
   const navigate = useNavigate();
   
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -43,25 +42,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
   };
   
-  // Function to get a valid image URL
-  const getValidImageUrl = (url: string) => {
-    if (!url) return "/placeholder.svg";
-    
-    // Fix ibb.co URLs that may have incorrect formats
-    if (url.includes('ibb.co')) {
-      // Extract the ID part from the URL
-      const parts = url.split('/');
-      const id = parts[parts.length - 1];
-      return `https://i.ibb.co/${id}`;
-    }
-    
-    return url;
-  };
-
-  // Get the product image with fallback
-  const productImage = imgError || !product.images || product.images.length === 0 
-    ? "/placeholder.svg" 
-    : getValidImageUrl(product.images[0]);
+  // Ensure the image exists, use a placeholder if not
+  const productImage = product.images && product.images.length > 0 && product.images[0] 
+    ? product.images[0] 
+    : "/placeholder.svg";
 
   return (
     <motion.div
@@ -79,7 +63,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
             alt={product.name}
             className="product-image h-full w-full object-cover"
             loading="lazy"
-            onError={() => setImgError(true)}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.src = "/placeholder.svg";
+            }}
           />
           
           <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">

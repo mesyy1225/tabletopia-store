@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "@/lib/data";
 import Layout from "@/components/Layout";
@@ -19,17 +19,9 @@ const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
-  const [imgErrors, setImgErrors] = useState<Record<number, boolean>>({});
 
   const productId = parseInt(id || "0");
   const product = getProductById(productId);
-
-  // Set the first valid color as default when product loads
-  useEffect(() => {
-    if (product?.colors && product.colors.length > 0 && !selectedColor) {
-      setSelectedColor(product.colors[0]);
-    }
-  }, [product, selectedColor]);
 
   const formatPrice = (price: number) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
@@ -47,37 +39,10 @@ const ProductDetail: React.FC = () => {
     );
   }
 
-  // Ensure all images are properly formatted, handle missing or broken images
-  const handleImageError = (index: number) => {
-    setImgErrors(prev => ({...prev, [index]: true}));
-    
-    // If the active image fails, switch to the first non-errored image
-    if (index === activeImageIndex) {
-      for (let i = 0; i < product.images.length; i++) {
-        if (!imgErrors[i]) {
-          setActiveImageIndex(i);
-          break;
-        }
-      }
-    }
-  };
-
-  const getValidImageUrl = (url: string, index: number) => {
-    if (imgErrors[index]) return "/placeholder.svg";
-    
-    // Handle different URL formats and ensure they're valid
-    if (!url) return "/placeholder.svg";
-    
-    // Fix potential URL format issues
-    const trimmedUrl = url.trim();
-    if (trimmedUrl.startsWith('https://i.ibb.co/')) {
-      const parts = trimmedUrl.split('/');
-      const id = parts[parts.length - 1];
-      return `https://i.ibb.co/${id}`;
-    }
-    
-    return trimmedUrl;
-  };
+  // Ensure that all product images exist, use a placeholder if not
+  const validatedImages = product.images.map(img => 
+    img ? img : "/placeholder.svg"
+  );
 
   const handleQuantityChange = (change: number) => {
     const newQuantity = quantity + change;
@@ -101,49 +66,45 @@ const ProductDetail: React.FC = () => {
           {/* Product Images */}
           <div className="product-images">
             <motion.div 
-              className="main-image-container h-[500px] rounded-lg overflow-hidden mb-4 bg-secondary/20"
+              className="main-image-container h-[500px] rounded-lg overflow-hidden mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
-              {product.images && product.images.length > 0 ? (
-                <img 
-                  src={getValidImageUrl(product.images[activeImageIndex], activeImageIndex)} 
-                  alt={`${product.name} main image`} 
-                  className="w-full h-full object-contain object-center"
-                  onError={() => handleImageError(activeImageIndex)}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <img 
-                    src="/placeholder.svg" 
-                    alt={`${product.name} placeholder`}
-                    className="w-2/3 h-2/3 object-contain opacity-50" 
-                  />
-                </div>
-              )}
+              <img 
+                src={validatedImages[activeImageIndex]} 
+                alt={product.name} 
+                className="w-full h-full object-cover object-center"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = "/placeholder.svg";
+                }}
+              />
             </motion.div>
             
-            {product.images && product.images.length > 0 && (
-              <div className="image-thumbnails grid grid-cols-5 gap-2">
-                {product.images.map((image, index) => (
-                  <div 
-                    key={index}
-                    className={`h-20 rounded-md overflow-hidden cursor-pointer border-2 bg-secondary/20 ${
-                      index === activeImageIndex ? "border-primary" : "border-transparent"
-                    }`}
-                    onClick={() => !imgErrors[index] && setActiveImageIndex(index)}
-                  >
-                    <img 
-                      src={getValidImageUrl(image, index)} 
-                      alt={`${product.name} thumbnail ${index + 1}`} 
-                      className="w-full h-full object-cover object-center"
-                      onError={() => handleImageError(index)}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className="image-thumbnails grid grid-cols-5 gap-2">
+              {validatedImages.map((image, index) => (
+                <div 
+                  key={index}
+                  className={`h-20 rounded-md overflow-hidden cursor-pointer border-2 ${
+                    index === activeImageIndex ? "border-primary" : "border-transparent"
+                  }`}
+                  onClick={() => setActiveImageIndex(index)}
+                >
+                  <img 
+                    src={image} 
+                    alt={`${product.name} thumbnail ${index + 1}`} 
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "/placeholder.svg";
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Product Details */}
@@ -185,7 +146,7 @@ const ProductDetail: React.FC = () => {
               <div className="mb-8">
                 <h3 className="text-sm font-semibold mb-3">Available Colors</h3>
                 <RadioGroup 
-                  value={selectedColor}
+                  defaultValue={product.colors[0]} 
                   onValueChange={setSelectedColor}
                   className="flex flex-wrap gap-4"
                 >
