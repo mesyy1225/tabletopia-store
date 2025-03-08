@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 interface CartPopupProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface CartPopupProps {
 
 const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
   const { state, removeFromCart, updateQuantity } = useCart();
+  const { state: authState } = useAuth();
 
   const formatPrice = (price: number) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
@@ -43,7 +45,7 @@ const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
             <div className="p-4 border-b flex items-center justify-between">
               <h2 className="font-medium text-xl flex items-center">
                 <ShoppingBag className="mr-2 h-5 w-5" />
-                Your Cart
+                Your Cart {authState.isAuthenticated && "(Synced)"}
               </h2>
               <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close">
                 <X className="h-5 w-5" />
@@ -52,7 +54,12 @@ const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
             
             {/* Cart items */}
             <div className="flex-grow overflow-auto p-4">
-              {state.items.length === 0 ? (
+              {state.isLoading ? (
+                <div className="h-full flex flex-col items-center justify-center text-center p-4">
+                  <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full mb-4"></div>
+                  <p className="text-muted-foreground">Loading your cart...</p>
+                </div>
+              ) : state.items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center p-4">
                   <ShoppingBag className="h-12 w-12 text-muted-foreground mb-4" />
                   <h3 className="font-medium text-lg mb-2">Your cart is empty</h3>
@@ -67,16 +74,38 @@ const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
                     <div key={item.product.id} className="flex items-start border-b pb-4">
                       <div className="h-20 w-20 rounded overflow-hidden flex-shrink-0 mr-3">
                         <img 
-                          src={item.product.images[0]} 
+                          src={item.product.images && item.product.images[0] ? item.product.images[0] : "/placeholder.svg"} 
                           alt={item.product.name}
                           className="h-full w-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.onerror = null;
+                            target.src = "/placeholder.svg";
+                          }}
                         />
                       </div>
                       <div className="flex-grow">
                         <h3 className="font-medium text-sm">{item.product.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Quantity: {item.quantity}
-                        </p>
+                        <div className="flex items-center my-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-7 w-7 p-0"
+                            onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                            disabled={item.quantity <= 1}
+                          >
+                            -
+                          </Button>
+                          <span className="mx-2 text-sm w-6 text-center">{item.quantity}</span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-7 w-7 p-0"
+                            onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          >
+                            +
+                          </Button>
+                        </div>
                         <div className="flex items-center justify-between">
                           <span className="font-medium">
                             {formatPrice(item.product.price * item.quantity)}
@@ -98,7 +127,7 @@ const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
             </div>
             
             {/* Footer with total and checkout */}
-            {state.items.length > 0 && (
+            {!state.isLoading && state.items.length > 0 && (
               <div className="border-t p-4 bg-muted/50">
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-muted-foreground">Subtotal</span>

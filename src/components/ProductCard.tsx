@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ShoppingCart, Eye, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +15,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
   const { addToCart } = useCart();
+  const { state: authState } = useAuth();
   const [isHovered, setIsHovered] = useState(false);
   
   const handleAddToCart = (e: React.MouseEvent) => {
