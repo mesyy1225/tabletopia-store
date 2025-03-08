@@ -1,12 +1,13 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Product } from "@/lib/data";
 import { motion } from "framer-motion";
 import { ShoppingCart, Eye, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product;
@@ -17,10 +18,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
   const { addToCart } = useCart();
   const { state: authState } = useAuth();
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    
+    if (!authState.isAuthenticated) {
+      toast.error("Please sign in to add items to cart", {
+        description: "You need to be logged in to add items to your cart",
+        action: {
+          label: "Sign In",
+          onClick: () => navigate("/login")
+        }
+      });
+      return;
+    }
+    
     addToCart(product, 1);
   };
 

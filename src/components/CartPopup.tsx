@@ -1,6 +1,6 @@
 
 import React from "react";
-import { X, ShoppingBag } from "lucide-react";
+import { X, ShoppingBag, LogIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,11 @@ const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose }) => {
   const formatPrice = (price: number) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
   };
+
+  // If not authenticated, don't render the cart
+  if (!authState.isAuthenticated) {
+    return null;
+  }
 
   return (
     <AnimatePresence>
