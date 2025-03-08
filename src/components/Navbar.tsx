@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { state: cartState } = useCart();
-  const { state: authState } = useAuth();
+  const { state: authState, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
