@@ -53,7 +53,7 @@ const About: React.FC = () => {
                   Our Mission
                 </span>
                 <h2 className="text-3xl font-serif font-bold mb-6">Crafting Quality, Enhancing Every Space</h2>
-                <p className="text-muted-foreground mb-4">At Birsora, our mission is to craft high-quality furniture that seamlessly blends functionality, durability, and aesthetic appeal. We are dedicated to creating timeless pieces that enhance homes and workspaces, ensuring comfort, elegance, and lasting value for every customer.</p>
+                <p className="text-muted-foreground mb-4">At TableLK, our mission is to craft high-quality furniture that seamlessly blends functionality, durability, and aesthetic appeal. We are dedicated to creating timeless pieces that enhance homes and workspaces, ensuring comfort, elegance, and lasting value for every customer.</p>
                 <p className="text-muted-foreground mb-6">We strive to innovate and refine our craftsmanship, using sustainable materials and advanced techniques to produce furniture that meets modern needs. Our commitment to excellence drives us to deliver superior products while fostering strong relationships with customers, built on trust and satisfaction.</p>
                 <Button asChild>
                   <Link to="/shop">
@@ -74,7 +74,7 @@ const About: React.FC = () => {
             }} transition={{
               duration: 0.6
             }} className="order-1 lg:order-2 h-[400px] md:h-[500px] rounded-lg overflow-hidden">
-                <img alt="Bisora fashion collection" className="w-full h-full object-cover" src="/lovable-uploads/c0eda8a5-90aa-4477-a353-8f7c26363615.jpg" />
+                <img alt="TableLK fashion collection" className="w-full h-full object-cover" src="/lovable-uploads/c0eda8a5-90aa-4477-a353-8f7c26363615.jpg" />
               </motion.div>
             </div>
           </div>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
                 From Concept to Creation
               </h2>
               <p className="text-muted-foreground">
-                The story of how Bisora came to be and evolved over time to become the brand we are today.
+                The story of how TableLK came to be and evolved over time to become the brand we are today.
               </p>
             </div>
             
@@ -99,7 +99,7 @@ const About: React.FC = () => {
               {[{
               year: "2019",
               title: "The Beginning",
-              description: "Birsora started as a small workshop crafting high-quality furniture, driven by a passion for exceptional craftsmanship and timeless design."
+              description: "TableLK started as a small workshop crafting high-quality furniture, driven by a passion for exceptional craftsmanship and timeless design."
             }, {
               year: "2020",
               title: "Growing Presence",
@@ -115,7 +115,7 @@ const About: React.FC = () => {
             }, {
               year: "Today",
               title: "A Growing Family",
-              description: "Birsora continues to grow, staying true to our values of quality, innovation, and customer satisfaction."
+              description: "TableLK continues to grow, staying true to our values of quality, innovation, and customer satisfaction."
             }].map((milestone, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
@@ -151,7 +151,7 @@ const About: React.FC = () => {
                 Our Team
               </span>
               <h2 className="text-3xl font-serif font-bold mb-6">
-                The People Behind Bisora
+                The People Behind TableLK
               </h2>
               <p className="text-muted-foreground">
                 Meet our dedicated team committed to bringing you exceptional fashion products.
@@ -163,7 +163,7 @@ const About: React.FC = () => {
               name: "Jane Doe",
               role: "Founder & Creative Director",
               image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-              description: "Jane's vision and creative direction have shaped Bisora from the beginning."
+              description: "Jane's vision and creative direction have shaped TableLK from the beginning."
             }, {
               name: "John Smith",
               role: "Head of Design",
@@ -173,7 +173,7 @@ const About: React.FC = () => {
               name: "Emily Johnson",
               role: "Production Manager",
               image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-              description: "Emily ensures that every Bisora product meets our high standards of quality."
+              description: "Emily ensures that every TableLK product meets our high standards of quality."
             }].map((member, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
@@ -210,7 +210,7 @@ const About: React.FC = () => {
                 What Drives Us
               </h2>
               <p className="text-muted-foreground">
-                The core principles that guide everything we do at Bisora.
+                The core principles that guide everything we do at TableLK.
               </p>
             </div>
             
@@ -267,10 +267,10 @@ const About: React.FC = () => {
             duration: 0.6
           }} className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Join the Bisora Community
+                Join the TableLK Community
               </h2>
               <p className="text-lg text-primary-foreground/90 mb-8">
-                Discover our collection and experience the Bisora difference for yourself.
+                Discover our collection and experience the TableLK difference for yourself.
               </p>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
                 <Link to="/shop">Shop Collection</Link>

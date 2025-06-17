@@ -61,7 +61,7 @@ const Login: React.FC = () => {
           <div className="text-center mb-8">
             <h1 className="text-3xl font-serif font-bold mb-2">Welcome Back</h1>
             <p className="text-muted-foreground">
-              Sign in to your Bisora account
+              Sign in to your TableLK account
             </p>
           </div>
 

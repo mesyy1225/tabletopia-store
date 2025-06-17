@@ -74,10 +74,10 @@ const Navbar: React.FC = () => {
         <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/188afeac-f211-4f16-bbfa-8018bbc74324.png" 
-            alt="Bisora Logo" 
+            alt="TableLK Logo" 
             className="h-10 md:h-12 w-auto object-contain"
           />
-          <span className="sr-only">Bisora</span>
+          <span className="sr-only">TableLK</span>
         </Link>
 
         {/* Desktop Navigation */}
