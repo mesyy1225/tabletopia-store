@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-lg">Address</h3>
-                      <p className="text-muted-foreground mt-1">Bisora Furniture, Maragahahena, Thalgahawila Road, Kudauduwa, Horana, Horana, Sri Lanka.</p>
+                      <p className="text-muted-foreground mt-1">TableLK Furniture, Maragahahena, Thalgahawila Road, Kudauduwa, Horana, Horana, Sri Lanka.</p>
                     </div>
                   </div>
 
@@ -147,7 +147,7 @@ const Contact: React.FC = () => {
                 <div className="mt-10 pt-10 border-t">
                   <h3 className="font-medium text-lg mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
-                    <a href="https://www.facebook.com/people/Bisora/100088083387315/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors">
+                    <a href="https://www.facebook.com/people/TableLK/100088083387315/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors">
                       <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.7 1H5.3C3 1 1 3 1 5.3v13.4C1 21 3 23 5.3 23h13.4c2.3 0 4.3-2 4.3-4.3V5.3C23 3 21 1 18.7 1zm-3.6 8.8h-1.4v-1c0-.8.3-1 1-1h.5V6h-1.6c-1.9 0-2.6 1.4-2.6 2.9v1H9v1.8h2v5.3h2.1v-5.3h1.4l.6-1.9z" />
                       </svg>

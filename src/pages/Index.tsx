@@ -33,7 +33,7 @@ const Index: React.FC = () => {
                 <h2 className="text-3xl md:text-4xl font-serif font-bold">
                   Exceptional Quality in Every Detail
                 </h2>
-                <p className="text-muted-foreground">At Birsora, we follow a meticulous process to craft high-quality furniture that blends durability with elegance. From selecting the finest raw materials to precision cutting and expert assembly, every step is handled with care to ensure exceptional craftsmanship and long-lasting value.</p>
+                <p className="text-muted-foreground">At TableLK, we follow a meticulous process to craft high-quality furniture that blends durability with elegance. From selecting the finest raw materials to precision cutting and expert assembly, every step is handled with care to ensure exceptional craftsmanship and long-lasting value.</p>
                 <p className="text-muted-foreground">Our team of skilled artisans and designers work together to bring your vision to life. Using advanced techniques and quality finishes, we create furniture that meets both aesthetic and functional needs. Every piece undergoes strict quality checks before reaching your space, ensuring perfection in every detail.</p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div>
@@ -80,17 +80,17 @@ const Index: React.FC = () => {
               {[{
               name: "Emily Johnson",
               role: "Loyal Customer",
-              quote: "The quality of my Bisora products is exceptional. The attention to detail and the materials make their pieces stand out in my wardrobe.",
+              quote: "The quality of my TableLK products is exceptional. The attention to detail and the materials make their pieces stand out in my wardrobe.",
               image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
             }, {
               name: "Michael Chen",
               role: "Fashion Enthusiast",
-              quote: "I've been a fan of Bisora for years. Their products consistently impress with their quality and style, and they always exceed my expectations.",
+              quote: "I've been a fan of TableLK for years. Their products consistently impress with their quality and style, and they always exceed my expectations.",
               image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
             }, {
               name: "Sofia Rodriguez",
               role: "Style Blogger",
-              quote: "The accessories I purchased from Bisora are truly works of art. The design details are extraordinary, and they've become conversation pieces in my outfits.",
+              quote: "The accessories I purchased from TableLK are truly works of art. The design details are extraordinary, and they've become conversation pieces in my outfits.",
               image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
             }].map((testimonial, index) => <motion.div key={index} initial={{
               opacity: 0,

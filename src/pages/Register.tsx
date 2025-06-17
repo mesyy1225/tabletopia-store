@@ -68,7 +68,7 @@ const Register: React.FC = () => {
           <div className="text-center mb-8">
             <h1 className="text-3xl font-serif font-bold mb-2">Create Account</h1>
             <p className="text-muted-foreground">
-              Join Bisora for exclusive furniture deals
+              Join TableLK for exclusive furniture deals
             </p>
           </div>
 
