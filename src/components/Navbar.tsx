@@ -65,8 +65,8 @@ const Navbar: React.FC = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-40 transition-all duration-300 px-6 md:px-8 lg:px-12",
         isScrolled
-          ? "py-3 bg-white/90 backdrop-blur-sm shadow-sm"
-          : "py-5 bg-transparent"
+          ? "py-3 bg-white/95 backdrop-blur-md shadow-sm"
+          : "py-5 bg-white/80 backdrop-blur-sm"
       )}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -98,12 +98,13 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Right Side: Cart & Auth */}
         <div className="hidden md:flex items-center space-x-4">
-          <button 
-            className="relative" 
-            onClick={toggleCart}
-            aria-label="Shopping Cart"
-          >
-            <Button variant="ghost" className="p-2" aria-label="Shopping Cart">
+          <div className="relative">
+            <Button 
+              variant="ghost" 
+              className="p-2" 
+              onClick={toggleCart}
+              aria-label="Shopping Cart"
+            >
               <ShoppingCart className="h-5 w-5" />
               {authState.isAuthenticated && cartState.totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -111,7 +112,7 @@ const Navbar: React.FC = () => {
                 </span>
               )}
             </Button>
-          </button>
+          </div>
 
           {authState.isAuthenticated ? (
             <div className="flex items-center space-x-2">
@@ -137,12 +138,13 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex items-center md:hidden space-x-2">
-          <button 
-            className="relative mr-2"
-            onClick={toggleCart}
-            aria-label="Shopping Cart"
-          >
-            <Button variant="ghost" className="p-1 h-9 w-9" aria-label="Shopping Cart">
+          <div className="relative mr-2">
+            <Button 
+              variant="ghost" 
+              className="p-1 h-9 w-9" 
+              onClick={toggleCart}
+              aria-label="Shopping Cart"
+            >
               <ShoppingCart className="h-5 w-5" />
               {authState.isAuthenticated && cartState.totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -150,7 +152,7 @@ const Navbar: React.FC = () => {
                 </span>
               )}
             </Button>
-          </button>
+          </div>
           <Button
             variant="ghost"
             className="p-1 h-9 w-9"
@@ -170,7 +172,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t mt-3"
+            className="md:hidden bg-white/95 backdrop-blur-md border-t mt-3"
           >
             <div className="max-w-7xl mx-auto py-4 flex flex-col">
               {navItems.map((item, index) => (

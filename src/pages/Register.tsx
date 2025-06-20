@@ -16,6 +16,7 @@ const Register: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, state } = useAuth();
   const navigate = useNavigate();
 
@@ -29,9 +30,11 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setIsSubmitting(true);
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      setIsSubmitting(false);
       return;
     }
 
@@ -40,10 +43,13 @@ const Register: React.FC = () => {
       // Auth state will update via the Supabase subscription
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to register");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  if (state.isLoading) {
+  // Show loading screen only during initial auth check
+  if (state.isLoading && !state.isAuthenticated) {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-12 flex items-center justify-center">
@@ -88,6 +94,7 @@ const Register: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                disabled={isSubmitting}
               />
             </div>
 
@@ -100,6 +107,7 @@ const Register: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={isSubmitting}
               />
             </div>
 
@@ -113,6 +121,7 @@ const Register: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  disabled={isSubmitting}
                 />
                 <Button
                   type="button"
@@ -121,6 +130,7 @@ const Register: React.FC = () => {
                   className="absolute right-0 top-0 h-full px-3 py-2"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
+                  disabled={isSubmitting}
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4 text-muted-foreground" />
@@ -140,15 +150,16 @@ const Register: React.FC = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <Button
               type="submit"
               className="w-full"
-              disabled={state.isLoading}
+              disabled={isSubmitting}
             >
-              {state.isLoading ? (
+              {isSubmitting ? (
                 <span className="flex items-center justify-center">
                   <svg
                     className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -170,7 +181,7 @@ const Register: React.FC = () => {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Loading...
+                  Creating account...
                 </span>
               ) : (
                 <span className="flex items-center justify-center">
