@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="font-serif text-xl font-semibold">TableLK</h3>
-            <p className="text-primary-foreground/80 max-w-xs">TableLK is a leading furniture manufacturer dedicated to crafting high-quality tables, almirahs, ironing tables, cupboards, and more. With a commitment to exceptional craftsmanship and innovative design, we transform spaces into functional and aesthetic environments</p>
+            <p className="text-primary-foreground/80 max-w-xs">TableLK is a leading furniture manufacturer dedicated to crafting high-quality Hybrid office tables. With a commitment to exceptional craftsmanship and innovative design, we transform spaces into functional and aesthetic environments</p>
             <div className="flex space-x-4 pt-2">
               <a href="https://www.facebook.com/people/TableLK/100088083387315/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
@@ -86,11 +86,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">+9471 270 2711</span>
+                <span className="text-primary-foreground/80">‎+94 76 902 7347</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">madupani02@gmail.com</span>
+                <span className="text-primary-foreground/80">bossfurniturelk@gmail.com</span>
               </li>
             </ul>
           </div>
