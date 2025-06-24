@@ -53,7 +53,7 @@ const About: React.FC = () => {
                   Our Mission
                 </span>
                 <h2 className="text-3xl font-serif font-bold mb-6">Crafting Quality, Enhancing Every Space</h2>
-                <p className="text-muted-foreground mb-4">At TableLK, our mission is to craft high-quality furniture that seamlessly blends functionality, durability, and aesthetic appeal. We are dedicated to creating timeless pieces that enhance homes and workspaces, ensuring comfort, elegance, and lasting value for every customer.</p>
+                <p className="text-muted-foreground mb-4">At TableLK, our mission is to craft high-quality tables that seamlessly blends functionality, durability, and aesthetic appeal. We are dedicated to creating timeless pieces that enhance homes and workspaces, ensuring comfort, elegance, and lasting value for every customer.</p>
                 <p className="text-muted-foreground mb-6">We strive to innovate and refine our craftsmanship, using sustainable materials and advanced techniques to produce furniture that meets modern needs. Our commitment to excellence drives us to deliver superior products while fostering strong relationships with customers, built on trust and satisfaction.</p>
                 <Button asChild>
                   <Link to="/shop">
