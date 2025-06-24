@@ -10,8 +10,8 @@ const Index: React.FC = () => {
   return (
     <Layout>
       <SEOHead 
-        title="TableLK - Premium Office Table Manufacturer in Sri Lanka"
-        description="TableLK is Sri Lanka's leading table manufacturer specializing in premium hybrid office tables, desks, and custom table solutions. Quality craftsmanship, modern designs, affordable prices. Order online or WhatsApp +94 76 902 7347"
+        title="TableLK - Premium Office Tables & Furniture Manufacturer in Sri Lanka"
+        description="TableLK - Premium office tables, desks & custom furniture in Sri Lanka. Quality craftsmanship, modern designs, affordable prices. Order now!"
         keywords="table, office table, desk, furniture, Sri Lanka, TableLK, office furniture, hybrid table, custom furniture, wooden table, modern table, ergonomic desk, workspace furniture, commercial furniture, buy table online Sri Lanka"
         canonical="https://tablelk.com"
       />
@@ -27,7 +27,7 @@ const Index: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-serif font-bold mb-6 text-center">
-                Premium Office Tables in Sri Lanka
+                Premium Tables and Office Furniture in Sri Lanka
               </h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground mb-4">
