@@ -106,11 +106,13 @@ export const products: Product[] = [
     description: productDescription,
     price: 16200,
     images: [
-      "https://i.ibb.co/GfhnC8Gy/coffee-table-1.jpg",
-      "https://i.ibb.co/LdHJRGZY/coffee-table-2.jpg",
-      "https://i.ibb.co/HT446tJn/coffee-table-3.jpg",
-      "https://i.ibb.co/MWYyYrn/coffee-table-4.jpg",
-      "https://i.ibb.co/yFbZFP3C/coffee-table-5.jpg"
+      "https://u.cubeupload.com/Tablelkk/IMG20250606WA0017.jpg",
+      "https://u.cubeupload.com/Tablelkk/Screenshot2025060516.jpg",
+      "https://u.cubeupload.com/Tablelkk/20250321115351.jpg",
+      "https://u.cubeupload.com/Tablelkk/1deIMG20250308WA0022.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250308WA0022.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250503WA0012.jpg",
+      "https://u.cubeupload.com/Tablelkk/WhatsAppImage2025031.jpg"
     ],
     categories: ["computer", "Modern", "office Room"],
     material: "15mm Melamine Particleboard with Steel Frame",
