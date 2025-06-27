@@ -160,20 +160,20 @@ const About: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[{
-              name: "Jane Doe",
-              role: "Founder & Creative Director",
+              name: "Jagath Sooriyachchi",
+              role: "Founder & Production Supervisor",
               image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-              description: "Jane's vision and creative direction have shaped TableLK from the beginning."
+              description: "Jagath's vision and creative direction have shaped TableLK from the beginning."
             }, {
-              name: "John Smith",
-              role: "Head of Design",
+              name: "Radika Madupani",
+              role: "Director",
               image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-              description: "John brings years of experience and a unique perspective to our design process."
+              description: "Radika brings years of experience and a unique perspective to our design process."
             }, {
-              name: "Emily Johnson",
-              role: "Production Manager",
+              name: "Kalana Bimsara",
+              role: "Sales Manager",
               image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80",
-              description: "Emily ensures that every TableLK product meets our high standards of quality."
+              description: "Kalana ensures that every TableLK product meets our high standards of quality."
             }].map((member, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
