@@ -166,7 +166,7 @@ const About: React.FC = () => {
               description: "Jagath's vision and creative direction have shaped TableLK from the beginning."
             }, {
               name: "Radika Madupani",
-              role: "Director",
+              role: "Senior Manager",
               image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
               description: "Radika brings years of experience and a unique perspective to our design process."
             }, {
