@@ -143,10 +143,11 @@ export const products: Product[] = [
     description: productDescription,
     price: 14600,
     images: [
-      "https://i.ibb.co/997VBVdX/desk-1.jpg",
-      "https://i.ibb.co/LXkYMk1S/desk-2.jpg",
-      "https://i.ibb.co/GvWKd096/desk-3.jpg",
-      "https://i.ibb.co/hFkLF0pG/desk-4.jpg"
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0019.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0013.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0021.jpg",
+      "https://u.cubeupload.com/Tablelkk/BusinessSuitecreatio.jpeg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250528WA0022.jpg"
     ],
     categories: ["Office", "Modern", "Desk"],
     material: "15mm Melamine Particleboard with Steel Frame",
@@ -185,10 +186,11 @@ export const products: Product[] = [
     description: productDescription,
     price: 12900,
     images: [
-      "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1581428982868-e410dd047a90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80",
-      "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0020.jpg",
+      "https://u.cubeupload.com/Tablelkk/545IMG20250120WA0012.jpg",
+      "https://u.cubeupload.com/Tablelkk/VideoCapture20250514.jpg",
+      "https://u.cubeupload.com/Tablelkk/20250321121437.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0019.jpg"
     ],
     categories: ["office", "Modern", "Living Room"],
     material: "15mm Melamine Particleboard with Steel Frame",
