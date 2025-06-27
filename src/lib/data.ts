@@ -229,9 +229,12 @@ export const products: Product[] = [
     description: productDescription,
     price: 22000,
     images: [
-      "https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1577140917170-285929fb55b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1457&q=80",
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0011.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250120WA0008.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250409WA0003.jpg",
+      "https://u.cubeupload.com/Tablelkk/9b7WhatsAppImage2025031.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250514WA0006.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250311WA0003.jpg"
     ],
     categories: ["Conference", "Modern", "Office"],
     material: "15mm Melamine Particleboard with Steel Frame",
@@ -262,9 +265,12 @@ export const products: Product[] = [
     description: productDescription,
     price: 16500,
     images: [
-      "https://images.unsplash.com/photo-1631455853929-ba06397f9a69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1097&q=80",
-      "https://images.unsplash.com/photo-1601590384651-c3aca464b059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0004.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0002.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0003.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0010.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0008.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0013.jpg"
     ],
     categories: ["dining Table", "Modern", "Living Room"],
     material: "15mm Melamine Particleboard with Steel Frame",
