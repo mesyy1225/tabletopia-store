@@ -63,11 +63,11 @@ export const products: Product[] = [
     description: productDescription,
     price: 18200,
     images: [
-      "https://i.ibb.co/gMcKWyFk/elegance-dining-1.jpg",
-      "https://i.ibb.co/Mkpp82D7/elegance-dining-2.jpg",
-      "https://i.ibb.co/DnMk7x5/elegance-dining-3.jpg",
-      "https://i.ibb.co/p6SVT1Wj/elegance-dining-4.jpg",
-      "https://i.ibb.co/N27prg9D/rustic-dining-1.jpg"
+      "https://u.cubeupload.com/Tablelkk/IMG20250601WA0022.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250330WA0009.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250402WA0001.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250501WA0007.jpg",
+      "https://u.cubeupload.com/Tablelkk/IMG20250501WA0006.jpg"
     ],
     categories: ["computer", "Modern", "Office"],
     material: "15mm Melamine Particleboard with Steel Frame",
