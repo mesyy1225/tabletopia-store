@@ -236,7 +236,7 @@ export const products: Product[] = [
       "https://u.cubeupload.com/Tablelkk/IMG20250514WA0006.jpg",
       "https://u.cubeupload.com/Tablelkk/IMG20250311WA0003.jpg"
     ],
-    categories: ["Conference", "Modern", "Office"],
+    categories: ["Executive Table", "Modern", "Office"],
     material: "15mm Melamine Particleboard with Steel Frame",
     dimensions: {
       width: 24,
