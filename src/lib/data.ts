@@ -184,7 +184,7 @@ export const products: Product[] = [
     name: "2.5ft x 2ft Smart Table",
     shortDescription: "Modern melamine office table with steel frame",
     description: productDescription,
-    price: 12900,
+    price: 13400,
     images: [
       "https://u.cubeupload.com/Tablelkk/IMG20250120WA0020.jpg",
       "https://u.cubeupload.com/Tablelkk/545IMG20250120WA0012.jpg",
