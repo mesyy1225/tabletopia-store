@@ -36,90 +36,197 @@
     <meta name="ICBM" content="6.7153, 80.0619" />
 
     <!-- Business + Products Schema -->
+    
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FurnitureStore",
-      "name": "TableLK",
-      "description": "Premium furniture manufacturer in Sri Lanka specializing in office tables, hybrid desks, and custom furniture solutions.",
-      "url": "https://tablelk.com",
-      "logo": "https://tablelk.com/lovable-uploads/e7511338-4de1-4aea-a3be-10f3a6b41823.png",
-      "image": "https://tablelk.com/lovable-uploads/e7511338-4de1-4aea-a3be-10f3a6b41823.png",
-      "telephone": "+94769027347",
-      "email": "bossfurniturelk@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "TableLK Furniture, Maragahahena, Thalgahawila Road, Kudauduwa",
-        "addressLocality": "Horana",
-        "addressCountry": "LK"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "6.7153",
-        "longitude": "80.0619"
-      },
-      "openingHours": "Mo-Sa 08:00-18:00",
-      "priceRange": "$$",
-      "areaServed": "Sri Lanka",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Furniture Catalog",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Office Tables",
-              "category": "Furniture",
-              "description": "Durable and stylish office tables in Sri Lanka, available in multiple sizes and finishes.",
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "LKR",
-                "price": "29800",
-                "availability": "http://schema.org/InStock",
-                "url": "https://tablelk.com/shop"
+      {
+        "@context": "https://schema.org",
+        "@type": "FurnitureStore",
+        "name": "TableLK",
+        "description": "Premium furniture manufacturer specializing in hybrid office tables and custom furniture solutions",
+        "url": "https://tablelk.com",
+        "logo": "https://tablelk.com/lovable-uploads/e7511338-4de1-4aea-a3be-10f3a6b41823.png",
+        "image": "https://tablelk.com/lovable-uploads/e7511338-4de1-4aea-a3be-10f3a6b41823.png",
+        "telephone": "+94769027347",
+        "email": "bossfurniturelk@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "bossfurniture , Gammanpila, Bandaragama",
+          "addressLocality": "Horana",
+          "addressCountry": "LK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "6.7153",
+          "longitude": "80.0619"
+        },
+        "openingHours": "Mo-Sa 08:00-18:00",
+        "priceRange": "$$",
+        "areaServed": "Sri Lanka",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Furniture Catalog",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Office Tables",
+                "category": "Furniture",
+                "description": "Durable and stylish office tables in Sri Lanka, available in multiple sizes and finishes.",
+                "image": "https://u.cubeupload.com/Tablelkk/IMG20250601WA0022.jpg",
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "LKR",
+                  "price": "18200",
+                  "availability": "http://schema.org/InStock",
+                  "url": "https://tablelk.com/shop",
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "LKR"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LK"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 3,
+                        "unitCode": "d"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 7,
+                        "unitCode": "d"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 7,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Hybrid Desks",
+                "category": "Furniture",
+                "description": "Modern hybrid desks ideal for offices and homes in Sri Lanka, designed for comfort and durability.",
+                "image": "https://u.cubeupload.com/Tablelkk/IMG20250606WA0017.jpg",
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "LKR",
+                  "price": "16200",
+                  "availability": "http://schema.org/InStock",
+                  "url": "https://tablelk.com/shop",
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "LKR"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LK"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 3,
+                        "unitCode": "d"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 7,
+                        "unitCode": "d"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 7,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Custom Furniture",
+                "category": "Furniture",
+                "description": "Custom-made tables and furniture designed to fit your exact needs and space in Sri Lanka.",
+                "image": "https://u.cubeupload.com/Tablelkk/IMG20250120WA0013.jpg",
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "LKR",
+                  "price": "12000",
+                  "availability": "http://schema.org/InStock",
+                  "url": "https://tablelk.com/contact",
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "LKR"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LK"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 3,
+                        "unitCode": "d"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 7,
+                        "unitCode": "d"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 7,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                }
               }
             }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Hybrid Desks",
-              "category": "Furniture",
-              "description": "Modern hybrid desks ideal for offices and homes in Sri Lanka, designed for comfort and durability.",
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "LKR",
-                "price": "32100",
-                "availability": "http://schema.org/InStock",
-                "url": "https://tablelk.com/shop"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Custom Furniture",
-              "category": "Furniture",
-              "description": "Custom-made tables and furniture designed to fit your exact needs and space in Sri Lanka.",
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "LKR",
-                "price": "0",
-                "availability": "http://schema.org/InStock",
-                "url": "https://tablelk.com/contact"
-              }
-            }
-          }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61577878267758"
         ]
-      },
-      "sameAs": [
-        "https://www.facebook.com/people/TableLK/100088083387315/"
-      ]
-    }
+      }
     </script>
+
 
     <!-- Botpress Chatbot -->
     <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
