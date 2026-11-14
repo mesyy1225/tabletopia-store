@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import { policyLinks } from "@/components/PolicyPage";
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
 const Footer: React.FC = () => {
+  const { get } = useSiteContent();
   return <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -53,26 +56,13 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <h4 className="font-serif text-lg font-semibold">Customer Service</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/shipping-policy" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Shipping Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/returns" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Returns & Refunds
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
+              {policyLinks.map((l) => (
+                <li key={l.path}>
+                  <Link to={l.path} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                    {l.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -82,15 +72,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">TableLK Furniture, No. 31/A/02, Gammanpila, Bandaragama, Sri Lanka.</span>
+                <span className="text-primary-foreground/80">{get("contact_address", "TableLK Furniture, No. 31/A/02, Gammanpila, Bandaragama, Sri Lanka.")}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">‎+94 72 4613204</span>
+                <span className="text-primary-foreground/80">{get("contact_phone", "+94 72 4613204")}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">bossfurniturelk@gmail.com</span>
+                <span className="text-primary-foreground/80">{get("contact_email", "bossfurniturelk@gmail.com")}</span>
               </li>
             </ul>
           </div>
@@ -98,6 +88,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-primary-foreground/70 text-sm">
           <p>© {new Date().getFullYear()} TableLK. All rights reserved.</p>
+          <p className="mt-2">Secure card payments by PayHere · Visa · Mastercard · American Express · Cash on delivery</p>
         </div>
       </div>
     </footer>;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getProductById } from "@/lib/data";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { policyConfig } from "@/lib/policyConfig";
+import { useProduct } from "@/hooks/useProducts";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
@@ -21,12 +22,19 @@ const ProductDetail: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
   const [isBuyNowOpen, setIsBuyNowOpen] = useState(false);
 
-  const productId = parseInt(id || "0");
-  const product = getProductById(productId);
+  const { product, isLoading } = useProduct(id);
 
   const formatPrice = (price: number) => {
     return `LKR ${price.toLocaleString('en-LK')}`;
   };
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-6 py-20 text-center text-muted-foreground">Loading...</div>
+      </Layout>
+    );
+  }
 
   if (!product) {
     return (
@@ -247,6 +255,12 @@ const ProductDetail: React.FC = () => {
               <span className="font-medium text-green-600 mr-2">💳</span>
               <span className="text-sm font-medium">Cash on Delivery (COD) Available!</span>
             </div>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Island-wide delivery ·{" "}
+              <Link to="/return-policy" className="underline underline-offset-2 hover:text-foreground">{policyConfig.returnWindowDays}-day returns</Link>{" "}
+              on standard items ·{" "}
+              <Link to="/shipping-policy" className="underline underline-offset-2 hover:text-foreground">Delivery info</Link>
+            </p>
           </div>
         </div>
         

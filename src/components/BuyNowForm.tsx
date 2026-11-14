@@ -1,3 +1,4 @@
+import { saveOrder } from "@/lib/saveOrder";
 
 import React, { useState } from 'react';
 import { Product } from '@/lib/data';
@@ -10,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ShoppingBag, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 interface BuyNowFormProps {
   product: Product;
@@ -70,6 +72,15 @@ Name: ${formData.name}
 
 ---
 Order placed via TableLK.com`;
+
+    saveOrder({
+      customer_name: formData.name,
+      customer_phone: formData.contactNumber,
+      shipping_address: formData.address,
+      notes: formData.remarks,
+      total: product.price * Number(formData.quantity),
+      items: [{ product_id: product.id, name: product.name, price: product.price, quantity: Number(formData.quantity), color: formData.selectedColor }],
+    });
 
     const whatsappNumber = "94704613204";
     const encodedMessage = encodeURIComponent(message);
@@ -201,6 +212,12 @@ Order placed via TableLK.com`;
             <Send className="h-4 w-4 mr-2" />
             Send Order via WhatsApp
           </Button>
+          <p className="text-xs text-center text-muted-foreground">
+            By placing this order you agree to our{" "}
+            <Link to="/terms-and-conditions" className="underline underline-offset-2" target="_blank">Terms &amp; Conditions</Link>,{" "}
+            <Link to="/return-policy" className="underline underline-offset-2" target="_blank">Return &amp; Refund Policy</Link> and{" "}
+            <Link to="/privacy-policy" className="underline underline-offset-2" target="_blank">Privacy Policy</Link>.
+          </p>
         </form>
       </DialogContent>
     </Dialog>

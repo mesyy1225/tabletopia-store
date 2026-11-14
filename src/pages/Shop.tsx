@@ -4,10 +4,10 @@ import Layout from "@/components/Layout";
 import ProductGrid from "@/components/ProductGrid";
 import SEOHead from "@/components/SEOHead";
 import { motion } from "framer-motion";
-import { getAllProducts } from "@/lib/data";
+import { useProducts } from "@/hooks/useProducts";
 
 const Shop: React.FC = () => {
-  const products = getAllProducts();
+  const { data: products = [], isLoading } = useProducts();
   
   return (
     <Layout>
@@ -17,7 +17,7 @@ const Shop: React.FC = () => {
         keywords="buy table online Sri Lanka, office table price, desk for sale, furniture shop, online furniture store, TableLK shop, hybrid table, ergonomic desk, custom table order"
         canonical="https://tablelk.com/shop"
       />
-      <div className="pt-24 pb-16">
+      <div className="pb-16">
         {/* Header */}
         <div className="bg-primary/10 py-12">
           <div className="container mx-auto px-6">
@@ -48,7 +48,7 @@ const Shop: React.FC = () => {
                 From modern hybrid tables to classic wooden desks, find the perfect furniture piece for your office, home, or commercial space. All tables are manufactured in Sri Lanka with premium materials and expert craftsmanship.
               </p>
             </div>
-            <ProductGrid products={products} />
+            {isLoading ? <p className="text-muted-foreground">Loading products...</p> : <ProductGrid products={products} />}
           </div>
         </section>
         
