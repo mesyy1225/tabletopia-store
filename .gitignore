@@ -1749,3 +1749,4 @@ dist-ssr
 .claude/skills/review-animations/STANDARDS.md
 .claude/skills/write-swift/SKILL.md
 skills-lock.json
+.env
