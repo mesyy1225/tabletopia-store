@@ -1,96 +1,134 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight, Facebook } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { policyLinks } from "@/components/PolicyPage";
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import PaymentBadges from "@/components/PaymentBadges";
+import { policyConfig, whatsappLink } from "@/lib/policyConfig";
+import { Reveal } from "@/components/motion";
+
+const SITE_LINKS = [
+  { to: "/shop", label: "Shop tables" },
+  { to: "/design", label: "Design a table" },
+  { to: "/about", label: "About the workshop" },
+  { to: "/contact", label: "Contact" },
+  { to: "/my-orders", label: "My orders" },
+];
+
+const linkClass = "link-draw text-white/75 transition-colors duration-300 hover:text-white";
+
 const Footer: React.FC = () => {
   const { get } = useSiteContent();
-  return <footer className="bg-primary text-primary-foreground pt-16 pb-8">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="font-serif text-xl font-semibold">TableLK</h3>
-            <p className="text-primary-foreground/80 max-w-xs">TableLK is a leading furniture manufacturer dedicated to crafting high-quality Hybrid office tables. With a commitment to exceptional craftsmanship and innovative design, we transform spaces into functional and aesthetic environments</p>
-            <div className="flex space-x-4 pt-2">
-              <a href="https://www.facebook.com/people/TableLK/100088083387315/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="hover:text-accent-foreground transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-accent-foreground transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-            </div>
+  // Admin-edited values (Site Content) override the defaults only when set.
+  const phone = get("contact_phone", policyConfig.phone);
+  const phoneHref = phone === policyConfig.phone ? policyConfig.phoneHref : `tel:${phone.replace(/[^\d+]/g, "")}`;
+  const email = get("contact_email", policyConfig.email);
+  const address = get("contact_address", policyConfig.address);
+
+  return (
+    <footer className="mat-ink overflow-hidden text-white">
+      <div className="shell pb-8 pt-16 md:pt-24">
+        <Reveal className="flex flex-col gap-8 border-b border-white/15 pb-12 md:flex-row md:items-end md:justify-between md:pb-16">
+          <h2 className="display-lg max-w-[16ch] text-white">Need a size we don't list? We'll build it.</h2>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              to="/design"
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-teak px-6 font-semibold text-ink transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Design your table
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+            <a
+              href={whatsappLink("Hi Table LK, I'd like a table made to my size")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 px-6 font-semibold text-white transition-colors duration-300 hover:bg-white hover:text-ink"
+            >
+              Ask on WhatsApp
+            </a>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 py-12 md:grid-cols-12 md:py-16">
+          <div className="col-span-2 md:col-span-4">
+            <p className="max-w-[34ch] text-white/75">
+              Table LK builds office, study and dining tables in its own workshop in Bandaragama, to your size and
+              finish, and delivers them anywhere in Sri Lanka.
+            </p>
+            <a
+              href={policyConfig.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-white/75 transition-colors duration-300 hover:text-white"
+            >
+              <Facebook className="h-5 w-5" />
+              <span className="link-draw">Table LK on Facebook</span>
+            </a>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/shop" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Contact
-                </Link>
-              </li>
+          <nav aria-label="Site" className="md:col-span-2 md:col-start-6">
+            <h3 className="label mb-4 text-white/50">Site</h3>
+            <ul className="space-y-2.5">
+              {SITE_LINKS.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className={linkClass}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Customer Service */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold">Customer Service</h4>
-            <ul className="space-y-2">
+          <nav aria-label="Policies" className="md:col-span-2">
+            <h3 className="label mb-4 text-white/50">Policies</h3>
+            <ul className="space-y-2.5">
               {policyLinks.map((l) => (
                 <li key={l.path}>
-                  <Link to={l.path} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  <Link to={l.path} className={linkClass}>
                     {l.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold">Get In Touch</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">{get("contact_address", "TableLK Furniture, No. 31/A/02, Gammanpila, Bandaragama, Sri Lanka.")}</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">{get("contact_phone", "+94 72 4613204")}</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="flex-shrink-0" />
-                <span className="text-primary-foreground/80">{get("contact_email", "bossfurniturelk@gmail.com")}</span>
-              </li>
-            </ul>
+          <div className="col-span-2 md:col-span-3">
+            <h3 className="label mb-4 text-white/50">Workshop</h3>
+            <address className="space-y-2.5 not-italic text-white/75">
+              <p className="max-w-[26ch]">{address}</p>
+              <p>
+                <a href={phoneHref} className={`${linkClass} num`}>
+                  {phone}
+                </a>
+              </p>
+              <p>
+                <a href={`mailto:${email}`} className={`${linkClass} break-all`}>
+                  {email}
+                </a>
+              </p>
+              <p className="text-white/50">{policyConfig.businessHours}</p>
+            </address>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-primary-foreground/70 text-sm">
-          <p>© {new Date().getFullYear()} TableLK. All rights reserved.</p>
-          <p className="mt-2">Secure card payments by PayHere · Visa · Mastercard · American Express · Cash on delivery</p>
+        <div className="flex flex-col gap-5 border-t border-white/15 pt-8 text-sm text-white/55 md:flex-row md:items-center md:justify-between">
+          <p>
+            © {new Date().getFullYear()} {policyConfig.legalName}. All rights reserved.
+          </p>
+          <PaymentBadges variant="dark" />
         </div>
       </div>
-    </footer>;
+
+      {/* Oversized wordmark, cropped by the bottom edge of the page */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none -mb-[0.2em] select-none whitespace-nowrap text-center font-display font-bold leading-[0.8] tracking-[-0.05em] text-white/[0.06]"
+        style={{ fontSize: "clamp(4.5rem, 22vw, 22rem)" }}
+      >
+        Table LK
+      </div>
+    </footer>
+  );
 };
+
 export default Footer;

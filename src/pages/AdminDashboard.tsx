@@ -1,3 +1,4 @@
+import SEOHead from "@/components/SEOHead";
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
@@ -10,6 +11,9 @@ import ProductsManager from "@/components/admin/ProductsManager";
 import OrdersManager from "@/components/admin/OrdersManager";
 import UsersManager from "@/components/admin/UsersManager";
 import SiteContentManager from "@/components/admin/SiteContentManager";
+import MessagesManager from "@/components/admin/MessagesManager";
+import HeroSlidesManager from "@/components/admin/HeroSlidesManager";
+import ReviewsManager from "@/components/admin/ReviewsManager";
 
 const AdminDashboard: React.FC = () => {
   const { state, logout } = useAuth();
@@ -19,7 +23,7 @@ const AdminDashboard: React.FC = () => {
   if (state.isLoading || loading) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-12 text-center text-muted-foreground">Loading...</div>
+        <div className="shell py-12 text-center text-steel" role="status">Loading...</div>
       </Layout>
     );
   }
@@ -35,15 +39,16 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary/10 p-2 rounded-full">
+      <SEOHead title="Admin | TableLK" noindex />
+      <div className="shell py-8">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="shrink-0 rounded-full bg-primary/10 p-2">
               <Shield className="h-5 w-5 text-primary" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-              <p className="text-sm text-muted-foreground">Signed in as {state.user?.email}</p>
+            <div className="min-w-0">
+              <h1 className="text-2xl font-bold">Admin dashboard</h1>
+              <p className="break-all text-sm text-steel">Signed in as {state.user?.email}</p>
             </div>
           </div>
           <Button variant="outline" onClick={handleLogout}>
@@ -52,14 +57,21 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <Tabs defaultValue="products">
-          <TabsList className="mb-6">
+          {/* One scrolling row of 44px tabs on phones; the list never wraps or squeezes. */}
+          <TabsList className="mb-6 flex h-auto w-full justify-start gap-1 overflow-x-auto rounded-xl p-1 sm:inline-flex sm:w-auto [&>button]:min-h-[2.75rem] [&>button]:shrink-0 [&>button]:rounded-lg [&>button]:px-4 sm:[&>button]:min-h-[2.25rem]">
             <TabsTrigger value="products">Products</TabsTrigger>
             <TabsTrigger value="orders">Orders</TabsTrigger>
+            <TabsTrigger value="messages">Messages</TabsTrigger>
+            <TabsTrigger value="carousel">Carousel</TabsTrigger>
+            <TabsTrigger value="reviews">Reviews</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="content">Site Content</TabsTrigger>
           </TabsList>
           <TabsContent value="products"><ProductsManager /></TabsContent>
           <TabsContent value="orders"><OrdersManager /></TabsContent>
+          <TabsContent value="messages"><MessagesManager /></TabsContent>
+          <TabsContent value="carousel"><HeroSlidesManager /></TabsContent>
+          <TabsContent value="reviews"><ReviewsManager /></TabsContent>
           <TabsContent value="users"><UsersManager /></TabsContent>
           <TabsContent value="content"><SiteContentManager /></TabsContent>
         </Tabs>

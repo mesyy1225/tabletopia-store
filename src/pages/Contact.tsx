@@ -1,174 +1,276 @@
-import React from "react";
+import { routeSeo } from "@/lib/seo";
+import React, { useState } from "react";
 import Layout from "@/components/Layout";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { motion } from "framer-motion";
-const Contact: React.FC = () => {
-  return <Layout>
-      <div className="pb-16">
-        {/* Header */}
-        <div className="bg-primary/10 py-12">
-          <div className="container mx-auto px-6 text-center">
-            <motion.h1 initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6
-          }} className="text-4xl font-serif font-bold mb-4">
-              Contact Us
-            </motion.h1>
-            <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6,
-            delay: 0.1
-          }} className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have questions or feedback? We'd love to hear from you.
-            </motion.p>
-          </div>
-        </div>
+import { MapPin, Phone, Mail, Clock, MessageCircle, Facebook, CheckCircle2, Loader2 } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { policyConfig, whatsappLink } from "@/lib/policyConfig";
+import { EASE_OUT } from "@/components/motion";
 
-        {/* Contact Form & Info Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Contact Form */}
-              <motion.div initial={{
-              opacity: 0,
-              x: -30
-            }} whileInView={{
-              opacity: 1,
-              x: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6
-            }}>
-                <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Your Name
-                      </label>
-                      <Input id="name" placeholder="John Doe" required />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email Address
-                      </label>
-                      <Input id="email" type="email" placeholder="john@example.com" required />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
-                      Subject
-                    </label>
-                    <Input id="subject" placeholder="How can we help you?" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
-                    <Textarea id="message" placeholder="Your message..." rows={6} required />
-                  </div>
-                  <Button type="submit" size="lg">
-                    Send Message
-                  </Button>
-                </form>
-              </motion.div>
+interface FormState {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
 
-              {/* Contact Information */}
-              <motion.div initial={{
-              opacity: 0,
-              x: 30
-            }} whileInView={{
-              opacity: 1,
-              x: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6
-            }} className="lg:pl-10">
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg">Address</h3>
-                      <p className="text-muted-foreground mt-1">TableLK Furniture, No. 31/A/02, Gammanpila, Bandaragama, Sri Lanka.</p>
-                    </div>
-                  </div>
+type FormErrors = Partial<Record<keyof FormState, string>>;
 
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg">Phone</h3>
-                      <p className="text-muted-foreground mt-1">‎+94 72 4613204</p>
-                    </div>
-                  </div>
+const EMPTY: FormState = { name: "", email: "", phone: "", subject: "", message: "" };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg">Email</h3>
-                      <p className="text-muted-foreground mt-1">bossfurniturelk@gmail.com</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <Clock className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg">Business Hours</h3>
-                      <div className="text-muted-foreground mt-1 space-y-1">
-                        <p>Open Everyday: 8am - 6pm</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-10 pt-10 border-t">
-                  <h3 className="font-medium text-lg mb-4">Follow Us</h3>
-                  <div className="flex space-x-4">
-                    <a href="https://www.facebook.com/people/TableLK/100088083387315/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors">
-                      <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.7 1H5.3C3 1 1 3 1 5.3v13.4C1 21 3 23 5.3 23h13.4c2.3 0 4.3-2 4.3-4.3V5.3C23 3 21 1 18.7 1zm-3.6 8.8h-1.4v-1c0-.8.3-1 1-1h.5V6h-1.6c-1.9 0-2.6 1.4-2.6 2.9v1H9v1.8h2v5.3h2.1v-5.3h1.4l.6-1.9z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors">
-                      <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M22.2 6c-.8.3-1.6.6-2.5.7.9-.5 1.6-1.4 1.9-2.4-.8.5-1.7.8-2.7 1-.8-.8-1.9-1.3-3.1-1.3-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1.9-3.5-.2-6.6-1.9-8.7-4.4-.4.6-.6 1.4-.6 2.1 0 1.5.8 2.8 1.9 3.5-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.7 3.3 4.1-.3.1-.7.1-1.1.1-.3 0-.5 0-.8-.1.5 1.7 2.1 2.9 3.9 2.9-1.4 1.1-3.2 1.8-5.1 1.8-.3 0-.7 0-1-.1 1.8 1.2 4 1.9 6.3 1.9 7.6 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors">
-                      <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5 7.5c0 .4-.4.8-.8.8s-.8-.4-.8-.8-.4-.8-.8-.8-.8.4-.8.8-.4.8-.8.8-.8-.4-.8-.8c0-1.4 1.8-2.5 3.2-2.5 1.4 0 1.8 1.1 1.8 2.5zM12 18c-2.5 0-4.6-1.5-5.5-3.5 2.3 1.5 7.5 1.2 8.5-1 0 0 .5 3.5-3 4.5zm1-7.5c0 .4-.4.8-.8.8s-.8-.4-.8-.8.4-.8.8-.8.8.4.8.8zm-2 0c0 .4-.4.8-.8.8s-.8-.4-.8-.8.4-.8.8-.8.8.4.8.8zm-.5-4.2c-1.4-.3-2.8.9-3.1 2.3-.1.7.3.9.8.7 0 0 .3-.2.7-.5 0 0 1-1.3 2-1.2 1 .1 1.1.3 1.9.2.3 0 .7-.4.2-1-.3-.5-1.2-.7-2.5-.5z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </Layout>;
+const validate = (f: FormState): FormErrors => {
+  const e: FormErrors = {};
+  if (f.name.trim().length < 2) e.name = "Please enter your name.";
+  else if (f.name.length > 100) e.name = "Name is too long.";
+  if (!EMAIL_RE.test(f.email.trim())) e.email = "Please enter a valid email address.";
+  if (f.phone.trim() && !/^[+\d][\d\s-]{6,19}$/.test(f.phone.trim())) e.phone = "Please enter a valid phone number.";
+  if (f.subject.trim().length < 2) e.subject = "Please add a subject.";
+  else if (f.subject.length > 150) e.subject = "Subject is too long.";
+  if (f.message.trim().length < 10) e.message = "Please write a little more (at least 10 characters).";
+  else if (f.message.length > 4000) e.message = "Message is too long (max 4000 characters).";
+  return e;
 };
+
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(policyConfig.address)}`;
+
+// One contact detail: the whole row is the link, so the tap target is full width and well over 44px tall.
+const rowLink =
+  "group flex min-h-[4.5rem] items-center justify-between gap-4 py-4 transition-colors duration-300 hover:text-teak-deep";
+const rowIcon = "h-5 w-5 shrink-0 text-steel transition-colors duration-300 group-hover:text-teak-deep";
+
+const Contact: React.FC = () => {
+  const [form, setForm] = useState<FormState>(EMPTY);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+  const reduce = useReducedMotion();
+
+  const update = (key: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((f) => ({ ...f, [key]: e.target.value }));
+    if (errors[key]) setErrors((er) => ({ ...er, [key]: undefined }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const v = validate(form);
+    setErrors(v);
+    if (Object.keys(v).length > 0) return;
+
+    setSubmitting(true);
+    const { error } = await (supabase as any).from("contact_messages").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim() || null,
+      subject: form.subject.trim(),
+      message: form.message.trim(),
+    });
+    setSubmitting(false);
+
+    if (error) {
+      toast.error("Sorry, your message couldn't be sent.", {
+        description: "Please try again, or message us on WhatsApp instead.",
+        action: {
+          label: "WhatsApp",
+          onClick: () => window.open(whatsappLink(`Hi TableLK, ${form.subject.trim() || "I have a question"}`), "_blank", "noopener"),
+        },
+      });
+      return;
+    }
+
+    setForm(EMPTY);
+    setSent(true);
+  };
+
+  const fieldClass = (key: keyof FormState) => (errors[key] ? "border-destructive focus-visible:ring-destructive" : "");
+
+  const fieldError = (key: keyof FormState) =>
+    errors[key] && (
+      <p id={`${key}-error`} className="text-sm font-medium text-destructive">
+        {errors[key]}
+      </p>
+    );
+
+  return (
+    <Layout>
+      <SEOHead {...routeSeo("/contact")} />
+
+      <header className="shell pb-8 pt-10 md:pb-12 md:pt-16">
+        <h1 className="display-lg">Contact us</h1>
+        <p className="mt-4 max-w-[52ch] text-steel md:text-lg">
+          Questions about sizes, colours, custom orders or delivery? Send us a message here, or call or WhatsApp the
+          workshop.
+        </p>
+      </header>
+
+      <div className="shell">
+        <div className="grid grid-cols-1 gap-14 border-t border-ink/15 pt-8 md:pt-12 lg:grid-cols-12 lg:gap-12">
+          {/* Contact form */}
+          <section aria-labelledby="contact-form-title" className="min-w-0 lg:col-span-7">
+            <h2 id="contact-form-title" className="display-md">
+              Send us a message
+            </h2>
+
+            <AnimatePresence mode="wait" initial={false}>
+              {sent ? (
+                <motion.div
+                  key="sent"
+                  role="status"
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: EASE_OUT }}
+                  className="mt-6 rounded-2xl border border-ink/10 bg-board p-6 md:p-8"
+                >
+                  <CheckCircle2 className="mb-4 h-9 w-9 text-teak-deep" aria-hidden="true" />
+                  <h3 className="text-xl md:text-2xl">Thank you, your message has been sent.</h3>
+                  <p className="mb-6 mt-2 max-w-[52ch] text-steel">
+                    We usually reply within one working day. For anything urgent, call or WhatsApp us on{" "}
+                    <a
+                      href={policyConfig.phoneHref}
+                      className="num font-semibold text-ink underline decoration-teak-deep decoration-[1.5px] underline-offset-4"
+                    >
+                      {policyConfig.phone}
+                    </a>
+                    .
+                  </p>
+                  <Button variant="outline" onClick={() => setSent(false)}>
+                    Send another message
+                  </Button>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="mt-6 space-y-5"
+                  onSubmit={handleSubmit}
+                  noValidate
+                >
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Your name</Label>
+                      <Input id="name" autoComplete="name" value={form.name} onChange={update("name")} className={fieldClass("name")} aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
+                      {fieldError("name")}
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email address</Label>
+                      <Input id="email" type="email" autoComplete="email" inputMode="email" value={form.email} onChange={update("email")} className={fieldClass("email")} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+                      {fieldError("email")}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">
+                      Phone <span className="font-normal text-steel">(optional)</span>
+                    </Label>
+                    <Input id="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="07X XXX XXXX" value={form.phone} onChange={update("phone")} className={fieldClass("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
+                    {fieldError("phone")}
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" placeholder="How can we help you?" value={form.subject} onChange={update("subject")} className={fieldClass("subject")} aria-invalid={!!errors.subject} aria-describedby={errors.subject ? "subject-error" : undefined} />
+                    {fieldError("subject")}
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" placeholder="Your message..." rows={6} value={form.message} onChange={update("message")} className={fieldClass("message")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+                    {fieldError("message")}
+                  </div>
+                  <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+                    <Button type="submit" size="lg" disabled={submitting} aria-busy={submitting} className="sm:min-w-[11rem]">
+                      {submitting ? (
+                        <>
+                          <Loader2 className="animate-spin" /> Sending
+                        </>
+                      ) : (
+                        "Send message"
+                      )}
+                    </Button>
+                    <Button type="button" size="lg" variant="outline" asChild>
+                      <a href={whatsappLink("Hi TableLK, I have a question")} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle /> Chat on WhatsApp
+                      </a>
+                    </Button>
+                  </div>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </section>
+
+          {/* Contact details */}
+          <section aria-labelledby="contact-details-title" className="min-w-0 lg:col-span-5 xl:col-span-4 xl:col-start-9">
+            <h2 id="contact-details-title" className="display-md">
+              Reach the workshop
+            </h2>
+            <ul className="mt-6 border-t border-ink/15">
+              <li className="border-b border-ink/15">
+                <a href={policyConfig.phoneHref} className={rowLink}>
+                  <span className="min-w-0">
+                    <span className="label block text-steel">Phone</span>
+                    <span className="num mt-1 block text-lg font-semibold">{policyConfig.phone}</span>
+                  </span>
+                  <Phone className={rowIcon} aria-hidden="true" />
+                </a>
+              </li>
+              <li className="border-b border-ink/15">
+                <a href={whatsappLink("Hi TableLK, I have a question")} target="_blank" rel="noopener noreferrer" className={rowLink}>
+                  <span className="min-w-0">
+                    <span className="label block text-steel">WhatsApp</span>
+                    <span className="num mt-1 block text-lg font-semibold">{policyConfig.whatsapp}</span>
+                  </span>
+                  <MessageCircle className={rowIcon} aria-hidden="true" />
+                </a>
+              </li>
+              <li className="border-b border-ink/15">
+                <a href={`mailto:${policyConfig.email}`} className={rowLink}>
+                  <span className="min-w-0">
+                    <span className="label block text-steel">Email</span>
+                    <span className="mt-1 block break-all text-lg font-semibold">{policyConfig.email}</span>
+                  </span>
+                  <Mail className={rowIcon} aria-hidden="true" />
+                </a>
+              </li>
+              <li className="border-b border-ink/15">
+                <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={rowLink}>
+                  <span className="min-w-0">
+                    <span className="label block text-steel">Address</span>
+                    <span className="mt-1 block text-lg font-semibold">{policyConfig.address}</span>
+                    <span className="mt-1 block text-sm text-steel">Open in Google Maps</span>
+                  </span>
+                  <MapPin className={rowIcon} aria-hidden="true" />
+                </a>
+              </li>
+              <li className="flex min-h-[4.5rem] items-center justify-between gap-4 border-b border-ink/15 py-4">
+                <span className="min-w-0">
+                  <span className="label block text-steel">Business hours</span>
+                  <span className="num mt-1 block text-lg font-semibold">{policyConfig.businessHours}</span>
+                </span>
+                <Clock className="h-5 w-5 shrink-0 text-steel" aria-hidden="true" />
+              </li>
+              <li className="border-b border-ink/15">
+                <a href={policyConfig.facebookUrl} target="_blank" rel="noopener noreferrer" className={rowLink} aria-label="TableLK on Facebook">
+                  <span className="min-w-0">
+                    <span className="label block text-steel">Facebook</span>
+                    <span className="mt-1 block text-lg font-semibold">Table LK on Facebook</span>
+                  </span>
+                  <Facebook className={rowIcon} aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
 export default Contact;
