@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+supabase/functions/payhere-checkout/index.ts
+supabase/functions/payhere-notify/index.ts
+supabase/migrations/20261114120000_checkout_contact_newsletter.sql
+supabase/migrations/20261115090000_hero_slides_customer_reviews.sql
+supabase/README.md
+supabase/setup.sql
